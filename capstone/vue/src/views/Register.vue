@@ -5,7 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
         id="username"
@@ -15,7 +15,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br />
+      <label for="password" class="sr-only"> Password: </label>
       <input
         type="password"
         id="password"
@@ -24,6 +25,8 @@
         v-model="user.password"
         required
       />
+      <br />
+      <label for="confirmPassword" class="sr-only"> Confirm Password: </label>
       <input
         type="password"
         id="confirmPassword"
@@ -32,7 +35,49 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <br />
+      <label for="firstName" class="sr-only"> First Name: </label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        placeholder="First Name"
+        v-model="user.firstName"
+        required
+      />
+      <br />
+      <label for="lastName" class="sr-only"> Last Name: </label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        placeholder="Last Name"
+        v-model="user.lastName"
+        required
+      />
+      <br />
+      <label for="emailAddress" class="sr-only"> Email Address: </label>
+      <input
+        type="text"
+        id="emailAddress"
+        class="form-control"
+        placeholder="Email Address"
+        v-model="user.emailAddress"
+        required
+      />
+      <br />
+      <label for="phoneNumber" class="sr-only"> Phone Number: </label>
+      <input
+        type="text"
+        id="phoneNumber"
+        class="form-control"
+        placeholder="Phone Number"
+        v-model="user.phoneNumber"
+        required
+      />
+      <br />
+      <router-link :to="{ name: 'login' }"> Have an account? </router-link>
+      <br />
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
@@ -51,6 +96,10 @@ export default {
         username: "",
         password: "",
         confirmPassword: "",
+        firstName: "",
+        lastName: "",
+        emailAddress: "",
+        phoneNumber: "",
         role: "user",
       },
       registrationErrors: false,
@@ -66,7 +115,6 @@ export default {
         authService
           .register(this.user)
           .then((response) => {
-            console.log(response.status);
             if (response.status == 201) {
               this.$router.push({
                 path: "/login",

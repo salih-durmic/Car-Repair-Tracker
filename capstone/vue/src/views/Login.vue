@@ -12,7 +12,7 @@
       >
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
         id="username"
@@ -22,7 +22,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br />
+      <label for="password" class="sr-only"> Password: </label>
       <input
         type="password"
         id="password"
@@ -31,7 +32,9 @@
         v-model="user.password"
         required
       />
+      <br />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <br />
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -57,7 +60,6 @@ export default {
       authService
         .login(this.user)
         .then((response) => {
-          console.log(response.status);
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
