@@ -5,6 +5,9 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Customer from '../views/Customer.vue'
+import Employee from '../views/Employee.vue'
+import Admin from '../views/Admin.vue'
 
 Vue.use(Router)
 
@@ -52,7 +55,31 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+    {
+      path: "/user/:id",
+      name: "user",
+      component: Customer,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/employee/:id",
+      name: "employee",
+      component: Employee,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/admin/:id",
+      name: "admin",
+      component: Admin,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 

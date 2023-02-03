@@ -49,6 +49,7 @@ export default {
   data() {
     return {
       user: {
+        id: "",
         username: "",
         password: "",
       },
@@ -63,16 +64,52 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+
+            if (this.isUser()) {
+              this.$router.push({
+                name: "user",
+                params: { id: this.$store.state.user.id },
+              });
+            } else if (this.isEmployee()) {
+              this.$router.push({
+                name: "employee",
+                params: { id: this.$store.state.user.id },
+              });
+            } else if (this.isAdmin()) {
+              this.$router.push({
+                name: "admin",
+                params: { id: this.$store.state.user.id },
+              });
+            }
           }
         })
         .catch((error) => {
           const response = error.response;
-
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
+    },
+    isUser() {
+      const hasUser =
+        this.$store.state.user.authorities.filter((auth) => {
+          return auth.name === "ROLE_USER";
+        }).length > 0;
+      return hasUser && this.$store.state.user.authorities.length == 1;
+    },
+    isEmployee() {
+      const hasEmployee =
+        this.$store.state.user.authorities.filter((auth) => {
+          return auth.name === "ROLE_EMPLOYEE";
+        }).length > 0;
+      return hasEmployee && this.$store.state.user.authorities.length == 1;
+    },
+    isAdmin() {
+      const hasAdmin =
+        this.$store.state.user.authorities.filter((auth) => {
+          return auth.name === "ROLE_ADMIN";
+        }).length > 0;
+      return hasAdmin;
     },
   },
 };
