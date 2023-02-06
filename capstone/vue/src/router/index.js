@@ -8,6 +8,7 @@ import store from '../store/index'
 import Customer from '../views/Customer.vue'
 import Employee from '../views/Employee.vue'
 import Admin from '../views/Admin.vue'
+import RequestService from '../views/RequestService.vue'
 
 Vue.use(Router)
 
@@ -80,6 +81,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: '/user/:id/requestService',
+      name: 'requestService',
+      component: RequestService,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
