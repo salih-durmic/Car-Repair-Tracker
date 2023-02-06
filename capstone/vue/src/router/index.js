@@ -82,7 +82,7 @@ const router = new Router({
       }
     },
     {
-      path: '/user/:id/requestService',
+      path: '/requestService',
       name: 'requestService',
       component: RequestService,
       meta: {
