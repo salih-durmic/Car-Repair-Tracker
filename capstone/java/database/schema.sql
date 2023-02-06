@@ -32,22 +32,25 @@ CREATE TABLE service (
     brakes varchar(50),
     tires varchar(50),
     body varchar(50),
+    carbon_air_filter varchar(50),
+    battery varchar(50),
+    scheduled_maintenance varchar(50),
+    misc varchar(500),
     CONSTRAINT PK_service_id PRIMARY KEY (service_id),
     CONSTRAINT FK_car_id FOREIGN KEY (car_id) REFERENCES cars(car_id)
 );
 
-CREATE TABLE repair_requests (
-    repair_id SERIAL,
+CREATE TABLE requests (
+    request_id SERIAL,
     service_id int NOT NULL,
-    date_reported date NOT NULL,
-    estimated_completion_date date NOT NULL,
+    date_reported varchar(50) NOT NULL,
+    estimated_completion_date varchar(50) NOT NULL,
     status varchar(50) NOT NULL,
     estimated_cost numeric,
     labor_cost numeric,
     paid bit NOT NULL,
-    CONSTRAINT PK_repair_id PRIMARY KEY (repair_id),
+    CONSTRAINT PK_request_id PRIMARY KEY (request_id),
     CONSTRAINT FK_service_id FOREIGN KEY (service_id) REFERENCES service(service_id)
     );
-
 
 COMMIT TRANSACTION;
