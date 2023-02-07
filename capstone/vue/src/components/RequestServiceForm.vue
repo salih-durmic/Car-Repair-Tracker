@@ -78,6 +78,7 @@ export default {
                 frontBrakes: '',
                 backBrakes: '',
                 tires: '',
+
                 body: '',
                 date:''
                 
