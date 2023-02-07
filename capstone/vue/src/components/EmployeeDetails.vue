@@ -20,8 +20,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="service in this.$store.state.services" v-bind:key="service.id">
-            <td>Name</td>
+        <tr v-for="service in services" v-bind:key="service.id">
+            <td>{{service.firstName}} {{service.lastName}}</td>
             <td>Phone Number</td>
             <td>Make</td>
             <td>Model</td>
