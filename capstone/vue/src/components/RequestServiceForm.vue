@@ -22,7 +22,6 @@
         <option value="Semi Synthetic">Semi Synthetic</option>
         <option value="Full Synthetic">Full Synthetic</option>
         </select>
-
         <select v-model="serviceRequest.frontBrakes">
         <option value="">--- Select Front Brakes ---</option>
         <option value="Good Year">Good Year</option>
