@@ -10,15 +10,17 @@
 <div id="form">
     <form class="request-service-form" v-on:submit.prevent="saveService">
       
-          <!-- <select v-model="car.type">
+          <select v-model="car.type">
         <option value="">--- Select your vehicle ---</option>
         <option value="???">{{car.make}}</option>
         
       </select>
 
-      <button >Add New Car</button> -->
+      <!-- <button >Add New Car</button> -->
 
-      <div id="makeModel">
+      <router-link to="/requestService" tag="button">Add New Car</router-link>
+
+      <!-- <div id="makeModel">
         <input
           class="make-input"
           type="text"
@@ -43,7 +45,7 @@
           placeholder="Color"
           v-model="car.color"
         />
-      </div>
+      </div> -->
 <div id="typeOfService">
       <select id="dropDownService" v-model="service.type">
         <option value="">--- Type of Service ---</option>
@@ -73,7 +75,7 @@
 import repairService from "../services/RepairService";
 
 export default {
-  name: "requestService",
+  name: "requestService2",
   data() {
     return {
       car: {

@@ -9,6 +9,7 @@ import Customer from '../views/Customer.vue'
 import Employee from '../views/Employee.vue'
 import Admin from '../views/Admin.vue'
 import RequestService from '../views/RequestService.vue'
+import RequestService2 from '../views/RequestService2.vue'
 
 Vue.use(Router)
 
@@ -85,6 +86,14 @@ const router = new Router({
       path: '/requestService',
       name: 'requestService',
       component: RequestService,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/requestService2',
+      name: 'requestService2',
+      component: RequestService2,
       meta: {
         requiresAuth: true
       }
