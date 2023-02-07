@@ -51,12 +51,12 @@ export default {
     name: 'employee-details',
     data() {
     return {
-      services: []
+     // services: []
     }
   },
   created() {
     repairsService.getServiceList().then((response) => {
-      this.services = response.data;
+      this.$store.commit("SET_SERVICES", response.data);
     });
   }
 

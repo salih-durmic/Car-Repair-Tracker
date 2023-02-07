@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    services: [],
     //cars: []
   },
   mutations: {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_SERVICES(state, data) {
+      state.services = data;
     },
     //SAVE_CAR(state, car) {
       //state.cars.push(car);
