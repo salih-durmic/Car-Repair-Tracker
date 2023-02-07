@@ -41,14 +41,15 @@ public class JdbcCarDao implements CarDao{
     }
 
     @Override
-    public boolean create(String make, String model, String color, String year) {
-        String sql = "insert into cars (make,model,color,year) values (?,?,?,?)";
-        return jdbcTemplate.update(sql, make, model, color, year) == 1;
+    public int create(String make, String model, String color, String year) {
+        String sql = "insert into cars (make,model,color,year) values (?,?,?,?) returning car_id";
+        Integer id = jdbcTemplate.queryForObject(sql, Integer.class);
+        return id;
     }
 
     private Car mapRowToCar(SqlRowSet results) {
         Car car = new Car();
-        car.setId(results.getInt("car_id"));
+        car.setCarId(results.getInt("car_id"));
         car.setMake(results.getString("make"));
         car.setModel(results.getString("model"));
         car.setColor(results.getString("color"));

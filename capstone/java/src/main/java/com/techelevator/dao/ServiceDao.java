@@ -10,5 +10,5 @@ public interface ServiceDao {
 
     Service getServiceById(int serviceId);
 
-    boolean create(String oil, String brakes, String tires, String body, String carbonAirFilter, String battery, String scheduledMaintenance, String misc);
+    boolean create(int carId, String oil, String brakes, String tires, String body, String carbonAirFilter, String battery, String scheduledMaintenance, String misc);
 }

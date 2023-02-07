@@ -2,7 +2,7 @@ package com.techelevator.model;
 
 public class Car {
 
-    private int id;
+    private int carId;
     private String make;
     private String model;
     private String color;
@@ -10,20 +10,20 @@ public class Car {
 
     public Car() {}
 
-    public Car(int id, String make, String model, String color, String year) {
-        this.id = id;
+    public Car(int carId, String make, String model, String color, String year) {
+        this.carId = carId;
         this.make = make;
         this.model = model;
         this.color = color;
         this.year = year;
     }
 
-    public int getId() {
-        return id;
+    public int getCarId() {
+        return carId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 
     public String getMake() {
@@ -61,7 +61,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "id=" + id +
+                "carId=" + carId +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +

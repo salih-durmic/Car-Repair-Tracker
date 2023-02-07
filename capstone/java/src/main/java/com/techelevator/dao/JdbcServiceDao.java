@@ -39,9 +39,9 @@ public class JdbcServiceDao implements ServiceDao{
     }
 
     @Override
-    public boolean create(String oil, String brakes, String tires, String body, String carbonAirFilter, String battery, String scheduledMaintenance, String misc) {
-        String sql = "insert into service(oil,brakes,tires,body,carbon_air_filter,battery,scheduled_maintenance,misc) values (?,?,?,?,?,?,?,?)";
-        return jdbcTemplate.update(sql, oil, brakes, tires, carbonAirFilter, battery, scheduledMaintenance, misc) == 1;
+    public boolean create(int carId, String oil, String brakes, String tires, String body, String carbonAirFilter, String battery, String scheduledMaintenance, String misc) {
+        String sql = "insert into service(car_id,oil,brakes,tires,body,carbon_air_filter,battery,scheduled_maintenance,misc) values (?,?,?,?,?,?,?,?,?)";
+        return jdbcTemplate.update(sql, carId, oil, brakes, tires, carbonAirFilter, battery, scheduledMaintenance, misc) == 1;
     }
 
     private Service mapRowToService(SqlRowSet results){
