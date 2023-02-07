@@ -7,91 +7,26 @@
       </article>
     </div>
 
-<<<<<<< HEAD
-    <div id="form">
-      <form class="request-service-form" v-on:submit.prevent="saveService">
-        <!-- <select v-model="car.type">
-=======
     <request-service-form />
-  
 
-
-      
-          <!-- <select v-model="car.type">
->>>>>>> main
+    <!-- <select v-model="car.type">
         <option value="">--- Select your vehicle ---</option>
         <option value="???">{{car.make}}</option>
         
       </select>
 
       <button >Add New Car</button> -->
-
-<<<<<<< HEAD
-        <div id="makeModel">
-          <input
-            class="make-input"
-            type="text"
-            placeholder="Make"
-            v-model="car.make"
-          />
-          <input
-            class="model-input"
-            type="text"
-            placeholder="Model"
-            v-model="car.model"
-          />
-          <input
-            class="year-input"
-            type="text"
-            placeholder="Year"
-            v-model="car.year"
-          />
-          <input
-            class="color-input"
-            type="text"
-            placeholder="Color"
-            v-model="car.color"
-          />
-        </div>
-        <div id="typeOfService">
-          <select id="dropDownService" v-model="service.type">
-            <option value="">--- Type of Service ---</option>
-            <option value="Oil">Oil</option>
-            <option value="Brakes">Brakes</option>
-            <option value="Tires">Tires</option>
-            <option value="Body">Body</option>
-          </select>
-
-          <label id="dropOffDate" for="drop-off-date">Drop Off Date: </label>
-          <input
-            id="drop-off-date"
-            name="drop-off-date"
-            class="drop-off-date-input"
-            type="date"
-            v-model="service.date"
-          />
-        </div>
-        <br />
-        <button id="submitRequestButton" type="submit">Submit Request</button>
-      </form>
-    </div>
-=======
-    
->>>>>>> main
   </div>
 </template>
 
 <script>
-import RequestServiceForm from '../components/RequestServiceForm.vue'
-
+import RequestServiceForm from "../components/RequestServiceForm.vue";
 
 export default {
   name: "requestService",
   components: {
-        RequestServiceForm
-    }
- 
-  
+    RequestServiceForm,
+  },
 };
 </script>
 
