@@ -8,7 +8,7 @@
       <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
-        id="username"
+        id="usernameRegister"
         class="form-control"
         placeholder="Username"
         v-model="user.username"
@@ -19,7 +19,7 @@
       <label for="password" class="sr-only"> Password: </label>
       <input
         type="password"
-        id="password"
+        id="passwordRegister"
         class="form-control"
         placeholder="Password"
         v-model="user.password"
