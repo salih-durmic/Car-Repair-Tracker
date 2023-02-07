@@ -7,9 +7,18 @@
       </article>
     </div>
 
+<<<<<<< HEAD
     <div id="form">
       <form class="request-service-form" v-on:submit.prevent="saveService">
         <!-- <select v-model="car.type">
+=======
+    <request-service-form />
+  
+
+
+      
+          <!-- <select v-model="car.type">
+>>>>>>> main
         <option value="">--- Select your vehicle ---</option>
         <option value="???">{{car.make}}</option>
         
@@ -17,6 +26,7 @@
 
       <button >Add New Car</button> -->
 
+<<<<<<< HEAD
         <div id="makeModel">
           <input
             class="make-input"
@@ -65,50 +75,28 @@
         <button id="submitRequestButton" type="submit">Submit Request</button>
       </form>
     </div>
+=======
+    
+>>>>>>> main
   </div>
 </template>
 
 <script>
-import repairsService from "../services/RepairsService";
+import RequestServiceForm from '../components/RequestServiceForm.vue'
+
 
 export default {
   name: "requestService",
-  data() {
-    return {
-      car: {
-        make: "",
-        model: "",
-        year: "",
-        color: "",
-        type: "",
-      },
-      service: {
-        oil: "",
-        brakes: "",
-        tires: "",
-        body: "",
-        date: "",
-        type: "",
-      },
-    };
-  },
-  methods: {
-    saveService() {
-      alert("button clicked");
-
-      repairsService.create(this.service).then((response) => {
-        if (response.status === 201) {
-          alert("success");
-          this.$router.push("/user/:id");
-        }
-      });
-    },
-  },
+  components: {
+        RequestServiceForm
+    }
+ 
+  
 };
 </script>
 
 <style>
-#makeModel {
+#car {
   display: flex;
   flex-direction: row;
   margin: auto;

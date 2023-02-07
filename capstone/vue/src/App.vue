@@ -24,7 +24,7 @@
             >
           </article>
           <article id="registerArt">
-            <router-link v-bind:to="{ name: 'requestService2' }"
+            <router-link v-bind:to="{ name: 'requestService' }"
               >Service</router-link
             >
           </article>
