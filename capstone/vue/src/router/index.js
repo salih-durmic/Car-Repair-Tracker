@@ -9,8 +9,12 @@ import Customer from '../views/Customer.vue'
 import Employee from '../views/Employee.vue'
 import Admin from '../views/Admin.vue'
 import RequestService from '../views/RequestService.vue'
+<<<<<<< HEAD
 import AddCar from '../views/AddCar.vue'
 import EmployeeHistory from '../views/EmployeeHistory.vue'
+=======
+import RequestService2 from '../views/RequestService2.vue'
+>>>>>>> main
 
 Vue.use(Router)
 
@@ -84,7 +88,7 @@ const router = new Router({
       }
     },
     {
-      path: '/user/:id/requestService',
+      path: '/requestService',
       name: 'requestService',
       component: RequestService,
       meta: {
@@ -92,6 +96,7 @@ const router = new Router({
       }
     },
     {
+<<<<<<< HEAD
       path: '/user/:id/addCar',
       name: 'addCar',
       component: AddCar,
@@ -103,6 +108,11 @@ const router = new Router({
       path: "/employeeHistory/:id",
       name: "employeehistory",
       component: EmployeeHistory,
+=======
+      path: '/requestService2',
+      name: 'requestService2',
+      component: RequestService2,
+>>>>>>> main
       meta: {
         requiresAuth: true
       }
