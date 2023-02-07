@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import repairService from "../services/RepairService";
+import repairsService from "../services/RepairsService";
 
 export default {
   name: "requestService",
@@ -97,7 +97,7 @@ export default {
     saveService() {
       alert("button clicked");
 
-      repairService.create(this.service).then((response) => {
+      repairsService.create(this.service).then((response) => {
         if (response.status === 201) {
           alert("success");
           this.$router.push("/user/:id");

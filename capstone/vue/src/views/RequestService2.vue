@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import repairService from "../services/RepairService";
+
 
 export default {
   name: "requestService2",
@@ -95,18 +95,7 @@ export default {
       },
     };
   },
-  methods: {
-    saveService() {
-      alert("button clicked");
-
-      repairService.create(this.service).then((response) => {
-        if (response.status === 201) {
-          alert("success");
-          this.$router.push("/user/:id");
-        }
-      });
-    },
-  },
+ 
 };
 </script>
 
