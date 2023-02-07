@@ -2,59 +2,86 @@
   <div>
       <form class="request-service-form" v-on:submit.prevent="saveService">
 
-          <select v-model="car.type">
+            <!-- need a v-model in select that selects the right car -->
+          <select >
         <option value="">--- Select your vehicle ---</option>
-        <option value="???">{{car.make}}</option>
+        <option value="???">Vehicle 1</option>
         
       </select>
 
-      <button >Add New Car</button>
-      <div>
-          <input class="make-input" type="text" placeholder="Make" v-model="car.make" />
-          <input class="model-input" type="text" placeholder="Model" v-model="car.model" />
-          <input class="year-input" type="text" placeholder="Year" v-model="car.year" />
-          <input class="color-input" type="text" placeholder="Color" v-model="car.color" />
+      <!--<router-link v-bind:to="{name: 'addCar'}">Add New Car</router-link>-->
+      
+      <input class="make-input" type="text" placeholder="Make" v-model="serviceRequest.make" />
+        <input class="model-input" type="text" placeholder="Model" v-model="serviceRequest.model" />
+        <input class="year-input" type="text" placeholder="Year" v-model="serviceRequest.year" />
+        <input class="color-input" type="text" placeholder="Color" v-model="serviceRequest.color" />
 
-      </div>
+      <select v-model="serviceRequest.oil">
+        <option value="">--- Select Oil Type ---</option>
+        <option value="Regular">Regular</option>
+        <option value="Semi Synthetic">Semi Synthetic</option>
+        <option value="Full Synthetic">Full Synthetic</option>
+        </select>
 
-      <select v-model="service.type">
-        <option value="">--- Type of Service ---</option>
-        <option value="Oil">Oil</option>
-        <option value="Brakes">Brakes</option>
-        <option value="Tires">Tires</option>
-        <option value="Body">Body</option>
+        <select v-model="serviceRequest.frontBrakes">
+        <option value="">--- Select Front Brakes ---</option>
+        <option value="Good Year">Good Year</option>
+        <option value="Power Stop">Power Stop</option>
+        <option value="Firestone">Firestone</option>
+        </select>
+
+        <select v-model="serviceRequest.backBrakes">
+        <option value="">--- Select Back Brakes ---</option>
+        <option value="Good Year">Good Year</option>
+        <option value="Power Stop">Power Stop</option>
+        <option value="Firestone">Firestone</option>
+        </select>
+
+        <select v-model="serviceRequest.tires">
+        <option value="">--- Select Tires ---</option>
+        <option value="x1 Firestone">x1 Firestone</option>
+        <option value="x2 Firestone">x2 Firestone</option>
+        <option value="x3 Firestone">x3 Firestone</option>
+        <option value="x4 Firestone">x4 Firestone</option>
+        <option value="x1 Bridgestone">x1 Bridgestone</option>
+        <option value="x2 Bridgestone">x2 Bridgestone</option>
+        <option value="x3 Bridgestone">x3 Bridgestone</option>
+        <option value="x4 Bridgestone">x4 Bridgestone</option>
+        <option value="x1 WeatherGuard">x1 WeatherGuard</option>
+        <option value="x2 WeatherGuard">x2 WeatherGuard</option>
+        <option value="x3 WeatherGuard">x3 WeatherGuard</option>
+        <option value="x4 WeatherGuard">x4 WeatherGuard</option>
         </select>
 
         <label for='drop-off-date'>Drop Off Date: </label>
-        <input id='drop-off-date' name='drop-off-date' class="drop-off-date-input" type="date" v-model="service.date" />
+        <input id='drop-off-date' name='drop-off-date' class="drop-off-date-input" type="date" v-model="serviceRequest.date" />
     
     <button type="submit">Submit Request</button>
   </form>
+  <!-- <h2> {{this.$store.state.cars.make}} </h2> -->
 
   </div>
 </template>
 
 <script>
-import repairService from "../services/RepairService";
+import repairsService from "../services/RepairsService";
 
 export default {
     name: "repair-service-form",
     data() {
         return {
-            car: {
+            serviceRequest: {
                 make: '',
                 model: '',
                 year: '',
                 color: '',
-                type: ''
-            },
-            service: {
                 oil: '',
-                brakes: '',
+                frontBrakes: '',
+                backBrakes: '',
                 tires: '',
                 body: '',
-                date:'',
-                type: ''
+                date:''
+                
             }
         }
     },
@@ -63,7 +90,7 @@ export default {
            
             alert("button clicked")
 
-            repairService.create(this.service).then((response) => {
+            repairsService.create(this.serviceRequest).then((response) => {
                 if(response.status===201) {
                     alert("success")
                     this.$router.push("/user/:id");

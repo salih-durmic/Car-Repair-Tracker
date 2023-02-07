@@ -9,6 +9,8 @@ import Customer from '../views/Customer.vue'
 import Employee from '../views/Employee.vue'
 import Admin from '../views/Admin.vue'
 import RequestService from '../views/RequestService.vue'
+import AddCar from '../views/AddCar.vue'
+import EmployeeHistory from '../views/EmployeeHistory.vue'
 
 Vue.use(Router)
 
@@ -85,6 +87,22 @@ const router = new Router({
       path: '/user/:id/requestService',
       name: 'requestService',
       component: RequestService,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/user/:id/addCar',
+      name: 'addCar',
+      component: AddCar,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/employeeHistory/:id",
+      name: "employeehistory",
+      component: EmployeeHistory,
       meta: {
         requiresAuth: true
       }
