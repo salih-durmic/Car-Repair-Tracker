@@ -39,16 +39,17 @@ public class JdbcServiceDao implements ServiceDao{
     }
 
     @Override
-    public boolean create(int carId, String oil, String brakes, String tires, String body, String carbonAirFilter, String battery, String scheduledMaintenance, String misc) {
-        String sql = "insert into service(car_id,oil,brakes,tires,body,carbon_air_filter,battery,scheduled_maintenance,misc) values (?,?,?,?,?,?,?,?,?)";
-        return jdbcTemplate.update(sql, carId, oil, brakes, tires, carbonAirFilter, battery, scheduledMaintenance, misc) == 1;
+    public boolean create(int carId, String oil, String frontBrakes, String backBrakes, String tires, String body, String carbonAirFilter, String battery, String scheduledMaintenance, String misc) {
+        String sql = "insert into service(car_id,oil,front_brakes,back_brakes,tires,body,carbon_air_filter,battery,scheduled_maintenance,misc) values (?,?,?,?,?,?,?,?,?,?)";
+        return jdbcTemplate.update(sql, carId, oil, frontBrakes, backBrakes, tires, body, carbonAirFilter, battery, scheduledMaintenance, misc) == 1;
     }
 
     private Service mapRowToService(SqlRowSet results){
         Service service = new Service();
         service.setServiceId(results.getInt("service_id"));
         service.setOil(results.getString("oil"));
-        service.setBrakes(results.getString("brakes"));
+        service.setFrontBrakes(results.getString("front_brakes"));
+        service.setBackBrakes(results.getString("back_brakes"));
         service.setTires(results.getString("tires"));
         service.setBody(results.getString("body"));
         service.setCarbonAirFilter(results.getString("carbon_air_filter"));

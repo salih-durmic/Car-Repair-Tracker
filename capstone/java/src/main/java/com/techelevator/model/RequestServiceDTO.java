@@ -12,7 +12,8 @@ public class RequestServiceDTO {
     private String year;
     private int serviceId;
     private String oil;
-    private String brakes;
+    private String frontBrakes;
+    private String backBrakes;
     private String tires;
     private String body;
     private String carbonAirFilter;
@@ -102,12 +103,20 @@ public class RequestServiceDTO {
         this.oil = oil;
     }
 
-    public String getBrakes() {
-        return brakes;
+    public String getFrontBrakes() {
+        return frontBrakes;
     }
 
-    public void setBrakes(String brakes) {
-        this.brakes = brakes;
+    public void setFrontBrakes(String frontBrakes) {
+        this.frontBrakes = frontBrakes;
+    }
+
+    public String getBackBrakes() {
+        return backBrakes;
+    }
+
+    public void setBackBrakes(String backBrakes) {
+        this.backBrakes = backBrakes;
     }
 
     public String getTires() {

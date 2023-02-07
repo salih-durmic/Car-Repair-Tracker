@@ -10,5 +10,5 @@ public interface CarDao {
 
     Car getCarById(int carId);
 
-    int create(String make, String model, String color, String year);
+    int create(int userId, String make, String model, String color, String year);
 }

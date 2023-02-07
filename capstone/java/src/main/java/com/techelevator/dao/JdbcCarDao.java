@@ -41,9 +41,9 @@ public class JdbcCarDao implements CarDao{
     }
 
     @Override
-    public int create(String make, String model, String color, String year) {
-        String sql = "insert into cars (make,model,color,year) values (?,?,?,?) returning car_id";
-        Integer id = jdbcTemplate.queryForObject(sql, Integer.class);
+    public int create(int userId, String make, String model, String color, String year) {
+        String sql = "insert into cars (user_id, make,model,color,year) values (?,?,?,?,?) returning car_id";
+        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, userId, make, model, color, year);
         return id;
     }
 

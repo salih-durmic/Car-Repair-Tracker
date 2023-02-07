@@ -4,7 +4,8 @@ public class Service {
 
     private int serviceId;
     private String oil;
-    private String brakes;
+    private String frontBrakes;
+    private String backBrakes;
     private String tires;
     private String body;
     private String carbonAirFilter;
@@ -14,13 +15,14 @@ public class Service {
 
     public Service() {}
 
-    public Service(int serviceId, String oil, String brakes, String tires, String body, String carbon_air_filter, String battery, String scheduledMaintenance, String misc) {
+    public Service(int serviceId, String oil, String frontBrakes, String backBrakes, String tires, String body, String carbonAirFilter, String battery, String scheduledMaintenance, String misc) {
         this.serviceId = serviceId;
         this.oil = oil;
-        this.brakes = brakes;
+        this.frontBrakes = frontBrakes;
+        this.backBrakes = backBrakes;
         this.tires = tires;
         this.body = body;
-        this.carbonAirFilter = carbon_air_filter;
+        this.carbonAirFilter = carbonAirFilter;
         this.battery = battery;
         this.scheduledMaintenance = scheduledMaintenance;
         this.misc = misc;
@@ -42,12 +44,20 @@ public class Service {
         this.oil = oil;
     }
 
-    public String getBrakes() {
-        return brakes;
+    public String getFrontBrakes() {
+        return frontBrakes;
     }
 
-    public void setBrakes(String brakes) {
-        this.brakes = brakes;
+    public void setFrontBrakes(String frontBrakes) {
+        this.frontBrakes = frontBrakes;
+    }
+
+    public String getBackBrakes() {
+        return backBrakes;
+    }
+
+    public void setBackBrakes(String backBrakes) {
+        this.backBrakes = backBrakes;
     }
 
     public String getTires() {
@@ -104,7 +114,8 @@ public class Service {
         return "Service{" +
                 "serviceId=" + serviceId +
                 ", oil='" + oil + '\'' +
-                ", brakes='" + brakes + '\'' +
+                ", frontBrakes='" + frontBrakes + '\'' +
+                ", backBrakes='" + backBrakes + '\'' +
                 ", tires='" + tires + '\'' +
                 ", body='" + body + '\'' +
                 ", carbonAirFilter='" + carbonAirFilter + '\'' +
