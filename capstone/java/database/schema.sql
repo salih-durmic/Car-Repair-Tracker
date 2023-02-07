@@ -48,7 +48,7 @@ CREATE TABLE requests (
     status varchar(50) NOT NULL,
     estimated_cost numeric,
     labor_cost numeric,
-    paid bit NOT NULL,
+    paid boolean NOT NULL,
     CONSTRAINT PK_request_id PRIMARY KEY (request_id),
     CONSTRAINT FK_service_id FOREIGN KEY (service_id) REFERENCES service(service_id)
     );
