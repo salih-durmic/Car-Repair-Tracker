@@ -36,7 +36,7 @@
           <td>{{this.$store.state.services.tires}}</td>
 
             <td>Today's date</td>
-            <!-- <form v-on:submit.prevent="saveRequest"> -->
+            
             <td><input id='completion-date' name='completion-date' class="completion-date-input" type="date" v-model="serviceRequest.date" /></td>
             <td><select v-model="serviceRequest.laborCost">
         <option value="">--- Select Labor Cost ---</option>
@@ -44,11 +44,18 @@
         <option value="Half Day Labor">Half Day Labor</option>
         <option value="Full Day Labor">Full Day Labor</option>
         </select></td>
-        <!-- <button type="submit">Submit Request</button> -->
-            <!-- </form> -->
+        
             <td>$$$</td>
-            <td>Pending</td>
+            <td><select v-model="serviceRequest.status">
+        <option value="">--- Select Status ---</option>
+        <option value="Pending">Pending</option>
+        <option value="Active">Active</option>
+        <option value="Completed">Completed</option>
+        </select></td>
             <td>No</td>
+             <td><button v-on:click="saveRequest" type="submit">Submit</button></td>
+
+             
             
         </tr>
       </tbody>
@@ -96,7 +103,7 @@ export default {
     },
     
   created() {
-    repairsService.get(2).then((response) => {
+    repairsService.getServices(2).then((response) => {
       console.log(response)
       this.$store.commit("SET_SERVICES", response.data.service);
       this.$store.commit("SET_REQUESTS", response.data.requests);

@@ -62,6 +62,20 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public List<User> listUsers(){
+        List<User> users = new ArrayList<>();
+        String sql = "select user_id, username, first_name, last_name, email_address, phone_number from users";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            User user = mapRowToUserList(results);
+            users.add(user);
+        }
+
+        return users;
+    }
+
+    @Override
     public User findByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
 
@@ -89,6 +103,17 @@ public class JdbcUserDao implements UserDao {
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
+        user.setFirstName(rs.getString("first_name"));
+        user.setLastName(rs.getString("last_name"));
+        user.setEmailAddress(rs.getString("email_address"));
+        user.setPhoneNumber(rs.getString("phone_number"));
+        return user;
+    }
+
+    public User mapRowToUserList(SqlRowSet rs){
+        User user = new User();
+        user.setId(rs.getInt("user_id"));
+        user.setUsername(rs.getString("username"));
         user.setFirstName(rs.getString("first_name"));
         user.setLastName(rs.getString("last_name"));
         user.setEmailAddress(rs.getString("email_address"));

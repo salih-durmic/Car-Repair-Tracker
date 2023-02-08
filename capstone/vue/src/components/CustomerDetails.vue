@@ -40,6 +40,8 @@
 
 <script>
 export default {
+    name: 'customer-details',
+    
 
 }
 </script>
