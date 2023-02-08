@@ -35,13 +35,22 @@
             >
           </article>
           <article id="profArt">
-            <img id="profile" src="./assets/profileLogo.jpg" style="width 45px; height: 45px;">
+            <img
+              id="profile"
+              src="./assets/profileLogo.jpg"
+              style="width 45px; height: 45px;"
+            />
           </article>
           <article id="loginArt">
-            <router-link v-bind:to="{ name: 'login' }"
+            <router-link
+              v-bind:to="{ name: 'login' }"
+              v-if="$store.state.token == ''"
               >Login</router-link
             >
           </article>
+          <a href='' id="dashboardArt" v-on:click="onDashboardClick">
+            Dashboard
+          </a>
         </section>
       </article>
     </section>
@@ -49,9 +58,53 @@
   </div>
 </template>
 
-
+<script>
+export default {
+  methods: {
+    onDashboardClick() {
+      if (this.isUser()) {
+        this.$router.push({
+          name: "user",
+          params: { id: this.$store.state.user.id },
+        });
+      } else if (this.isEmployee()) {
+        this.$router.push({
+          name: "employee",
+          params: { id: this.$store.state.user.id },
+        });
+      } else if (this.isAdmin()) {
+        this.$router.push({
+          name: "admin",
+          params: { id: this.$store.state.user.id },
+        });
+      }
+    },
+    isUser() {
+      const hasUser =
+        this.$store.state.user.authorities.filter((auth) => {
+          return auth.name === "ROLE_USER";
+        }).length > 0;
+      return hasUser && this.$store.state.user.authorities.length == 1;
+    },
+    isEmployee() {
+      const hasEmployee =
+        this.$store.state.user.authorities.filter((auth) => {
+          return auth.name === "ROLE_EMPLOYEE";
+        }).length > 0;
+      return hasEmployee && this.$store.state.user.authorities.length == 1;
+    },
+    isAdmin() {
+      const hasAdmin =
+        this.$store.state.user.authorities.filter((auth) => {
+          return auth.name === "ROLE_ADMIN";
+        }).length > 0;
+      return hasAdmin;
+    },
+  },
+};
+</script>script>
 <style>
-#page{
+#page {
   padding: 50px;
 }
 #app {
@@ -71,27 +124,26 @@
 
 #logo {
   flex-basis: 10%;
-border: 3px solid #636363;
-justify-content: center;
-align-items: center;
+  border: 3px solid #636363;
+  justify-content: center;
+  align-items: center;
 }
-#image {padding-top: 25%;
+#image {
+  padding-top: 25%;
   position: relative;
-  
-  margin: auto;
 
+  margin: auto;
 }
 
 #company {
   flex-basis: 50%;
   border: 3px solid #636363;
-    /* padding-top: 10px; */
+  /* padding-top: 10px; */
 }
 #hyperlinks {
   flex-basis: 45%;
   text-align: center;
   border: 3px solid #636363;
-
 }
 #companyName {
   font-size: 50px;
@@ -103,27 +155,29 @@ align-items: center;
   flex-basis: 25%;
   align-items: center;
 }
-#login{
+#login {
   flex-basis: 25%;
 }
-#profile{
+#profile {
   flex-basis: auto;
   position: relative;
 }
-#logoutArt{
-padding: 25px 25px;
+#logoutArt {
+  padding: 25px 25px;
 }
-#registerArt{
-padding: 25px 25px;
+#registerArt {
+  padding: 25px 25px;
 }
-#homeArt{
-padding: 25px 25px;
+#dashboardArt {
+  padding: 25px 25px;
 }
-#profArt{
-padding: 20px 15px;
+#homeArt {
+  padding: 25px 25px;
 }
-#loginArt{
-padding-top: 25px;
-
+#profArt {
+  padding: 20px 15px;
+}
+#loginArt {
+  padding-top: 25px;
 }
 </style>
