@@ -41,7 +41,7 @@ public class RequestController {
     @RequestMapping(path ="/services", method = RequestMethod.GET)
     public GetAllDto getAllDto(){
         GetAllDto getAll = new GetAllDto();
-        List<User> users = userDao.findAll();
+        List<User> users = userDao.listUsers();
         List<Car> cars = carDao.findAll();
         List<Service> services = serviceDao.findAll();
         List<Request> requests = requestDao.findAll();
