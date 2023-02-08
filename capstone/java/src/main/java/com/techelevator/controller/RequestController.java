@@ -68,5 +68,10 @@ public class RequestController {
         return cars;
     }
 
+    @RequestMapping(path="/user", method =RequestMethod.GET)
+    public List<User> listUsers(){
+        return userDao.listUsers();
+    }
+
 
 }
