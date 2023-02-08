@@ -2,7 +2,11 @@ import axios from "axios";
 
 export default {
 
-    getId(id) {
+    getCarsByUser(id) {
         return axios.get(`/user/${id}`)
+    },
+    getUsers() {
+        return axios.get(`/user`)
     }
+
 }

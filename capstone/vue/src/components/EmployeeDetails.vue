@@ -3,7 +3,7 @@
       <table>
       <thead>
         <tr>
-          <!-- <th>Name</th> -->
+           <th>Name</th>
           <!-- <th>Phone Number</th> -->
           <!-- <th>Make</th> -->
           <!-- <th>Model</th> -->
@@ -24,7 +24,7 @@
       </thead>
       <tbody>
         <tr >
-            <!-- <td></td> -->
+             <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td>
             <!-- <td></td> -->
             <!-- <td></td> -->
             <!-- <td></td> -->
