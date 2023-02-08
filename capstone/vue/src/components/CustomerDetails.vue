@@ -25,7 +25,7 @@
                         <td>{{car.year}}</td>
                         <td>{{car.color}}</td>
                        
-                         <td></td>
+                         <td><router-link v-bind:to="{name: 'carServices', params: {id: car.carId}}">number</router-link></td>
                         <!-- <td>???</td> -->
                         <!-- <td>No</td> -->
 
