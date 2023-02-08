@@ -22,7 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     services: [],
     requests: [],
-    //cars: []
+    cars: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -47,6 +47,10 @@ export default new Vuex.Store({
     SET_REQUESTS(state, data) {
       state.requests = data;
     },
+    SET_CARS(state, data) {
+      state.cars = data;
+    },
+
     //SAVE_CAR(state, car) {
       //state.cars.push(car);
     //}
