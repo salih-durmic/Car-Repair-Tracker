@@ -17,9 +17,7 @@ const http = axios.create({
     create(serviceRequest) {
         return http.post('/services', serviceRequest);
       },
-      getCarsByUser(id) {
-        return http.get(`/user/${id}`)
-      },
+      
     update(id, service) {
         return http.put(`/services/${id}`, service);
       },
