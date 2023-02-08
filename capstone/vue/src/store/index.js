@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     services: [],
+    requests: [],
     //cars: []
   },
   mutations: {
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     },
     SET_SERVICES(state, data) {
       state.services = data;
+    },
+    SET_REQUESTS(state, data) {
+      state.requests = data;
     },
     //SAVE_CAR(state, car) {
       //state.cars.push(car);

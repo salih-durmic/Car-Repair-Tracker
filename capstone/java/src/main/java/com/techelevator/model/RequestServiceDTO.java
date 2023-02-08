@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.math.BigDecimal;
+
 public class RequestServiceDTO {
 
     private int userId;
@@ -22,6 +24,13 @@ public class RequestServiceDTO {
     private String misc;
     private int requestId;
     private String dateReported;
+    private String estimatedCompletionDate;
+    private String status;
+    private BigDecimal estimatedCost;
+    private BigDecimal laborCost;
+    private boolean paid;
+
+
 
     public int getUserId() {
         return userId;
@@ -181,5 +190,25 @@ public class RequestServiceDTO {
 
     public void setDateReported(String dateReported) {
         this.dateReported = dateReported;
+    }
+
+    public void setEstimatedCompletionDate(String estimatedCompletionDate) {
+        this.estimatedCompletionDate = estimatedCompletionDate;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setEstimatedCost(BigDecimal estimatedCost) {
+        this.estimatedCost = estimatedCost;
+    }
+
+    public void setLaborCost(BigDecimal laborCost) {
+        this.laborCost = laborCost;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 }
