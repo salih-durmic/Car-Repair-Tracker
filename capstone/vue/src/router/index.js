@@ -11,7 +11,7 @@ import Admin from '../views/Admin.vue'
 import RequestService from '../views/RequestService.vue'
 
 import AddCar from '../views/AddCar.vue'
-import EmployeeHistory from '../views/EmployeeHistory.vue'
+import CompletedOrders from '../views/CompletedOrders.vue'
 
 import RequestService2 from '../views/RequestService2.vue'
 
@@ -105,9 +105,9 @@ const router = new Router({
       }
     },
     {
-      path: "/employeeHistory/:id",
-      name: "employeehistory",
-      component: EmployeeHistory,
+      path: "/completedorders",
+      name: "completedOrders",
+      component: CompletedOrders,
       meta: {
         requiresAuth: true
       }

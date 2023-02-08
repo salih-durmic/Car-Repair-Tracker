@@ -38,6 +38,20 @@ public class RequestController {
                 request.getScheduledMaintenance(), request.getMisc());
     }
 
+    @RequestMapping(path ="/services", method = RequestMethod.GET)
+    public GetAllDto getAllDto(){
+        GetAllDto getAll = new GetAllDto();
+        List<User> users = userDao.findAll();
+        List<Car> cars = carDao.findAll();
+        List<Service> services = serviceDao.findAll();
+        List<Request> requests = requestDao.findAll();
+        getAll.setUsers(users);
+        getAll.setCars(cars);
+        getAll.setServices(services);
+        getAll.setRequests(requests);
+        return getAll;
+    }
+
     @RequestMapping(path="/services/{id}", method = RequestMethod.GET)
     public GetServiceDTO getRequestService(@PathVariable int id) {
         GetServiceDTO getServiceDTO = new GetServiceDTO();
@@ -47,4 +61,12 @@ public class RequestController {
         getServiceDTO.setRequests(request);
         return getServiceDTO;
     }
+
+    @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
+    public List<Car> getCarsByUser(@PathVariable int id) {
+        List<Car> cars = carDao.getCarByUserId(id);
+        return cars;
+    }
+
+
 }
