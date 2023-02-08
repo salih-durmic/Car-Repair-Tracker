@@ -14,6 +14,7 @@ import AddCar from '../views/AddCar.vue'
 import CompletedOrders from '../views/CompletedOrders.vue'
 
 import RequestService2 from '../views/RequestService2.vue'
+import CarServices from '../views/CarServices.vue'
 
 
 Vue.use(Router)
@@ -120,6 +121,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
      }
+    },
+    {
+
+      path: '/carServices/:id',
+      name: 'carServices',
+      component: CarServices,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
