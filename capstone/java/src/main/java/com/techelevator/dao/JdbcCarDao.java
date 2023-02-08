@@ -41,6 +41,20 @@ public class JdbcCarDao implements CarDao{
     }
 
     @Override
+    public List<Car> getCarByUserId(int userId) {
+        List<Car> cars = new ArrayList<>();
+        String sql = "select c.car_id, c.user_id, c.make, c.model, c.color, c.year from cars c " +
+                "join users u on c.user_id = u.user_id " +
+                "where u.user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while (results.next()){
+            Car car = mapRowToCar(results);
+            cars.add(car);
+        }
+        return cars;
+    }
+
+    @Override
     public int create(int userId, String make, String model, String color, String year) {
         String sql = "insert into cars (user_id, make,model,color,year) values (?,?,?,?,?) returning car_id";
         Integer id = jdbcTemplate.queryForObject(sql, Integer.class, userId, make, model, color, year);

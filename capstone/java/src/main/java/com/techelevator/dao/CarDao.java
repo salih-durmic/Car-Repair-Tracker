@@ -10,5 +10,7 @@ public interface CarDao {
 
     Car getCarById(int carId);
 
+    List<Car> getCarByUserId(int userId);
+
     int create(int userId, String make, String model, String color, String year);
 }
