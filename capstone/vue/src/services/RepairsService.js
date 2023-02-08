@@ -10,13 +10,14 @@ const http = axios.create({
         return http.get('/services');
       },
 
-      get(id) {
+      getServices(id) {
         return http.get(`/services/${id}`)
       },
 
     create(serviceRequest) {
         return http.post('/services', serviceRequest);
       },
+      
     update(id, service) {
         return http.put(`/services/${id}`, service);
       },
@@ -24,6 +25,8 @@ const http = axios.create({
     delete(id) {
           return http.delete(`/services/${id}`);
         }
+
+
 
 
 

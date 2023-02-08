@@ -2,34 +2,37 @@
   <div class="details">
       <h1>Actual Customer Details</h1>
       <table>
-          <tbody>  
-                    <tr>
-                        <td>Name</td>
-                        <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td>
-                    </tr>
-                    <tr>
-                        <td>Make</td>
-                        <td>???</td>
-                    </tr>
-                    <tr>
-                        <td>Model</td>
-                        <td>???</td>
-                    </tr>
-                    <tr>
-                        <td>Year</td>
-                        <td>???</td>
-                    </tr>
-                    <tr>
-                        <td>Issues Reported</td>
-                        <td>???</td>
-                    </tr>
-                    <tr>
-                        <td>Estimated Repair Cost</td>
-                        <td>???</td>
-                    </tr>
-                    <tr>
-                        <td>Ready for Pick-Up</td>
-                        <td>No</td>
+        <thead>
+            <tr>
+                <!-- <th>Name</th> -->
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Color</th>
+
+                <th>Issues Reported</th>
+                <!-- <th>Estimated Repair Cost</th> -->
+                <!-- <th>Ready for Pick-Up</th> -->
+            </tr>
+        </thead>
+         <tbody>  
+            <tr v-for="car in this.$store.state.cars" v-bind:key="car.carId">
+                
+                <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
+                <!-- <div> -->
+                        <td>{{car.make}}</td>
+                        <td>{{car.model}}</td>
+                        <td>{{car.year}}</td>
+                        <td>{{car.color}}</td>
+                       
+                         <td></td>
+                        <!-- <td>???</td> -->
+                        <!-- <td>No</td> -->
+
+                <!-- </div> -->
+                   
+                    
+                   
                     </tr>
           </tbody>
       </table>
@@ -39,9 +42,22 @@
 </template>
 
 <script>
-export default {
+import UserService from "../services/UserService";
 
+export default {
+    name: 'customer-details',
+    created() {
+    UserService.getCarsByUser(this.$route.params.id).then((response) => {
+      console.log(response)
+      this.$store.commit("SET_CARS", response.data);
+      
+    });
+  }
 }
+   
+    
+
+
 </script>
 
 <style>
