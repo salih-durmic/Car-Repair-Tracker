@@ -12,4 +12,6 @@ public interface RequestDao {
     Request getRequestById(int requestId);
 
     boolean create(String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, BigDecimal laborCost, boolean paid);
+
+    List <Request> getRequestByServiceId(int serviceId);
 }

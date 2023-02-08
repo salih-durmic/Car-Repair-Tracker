@@ -89,12 +89,16 @@ export default {
         saveService() {
            
             alert("button clicked")
+            
 
             repairsService.create(this.serviceRequest).then((response) => {
-                if(response.status===201) {
+                if(response.status===200) {
                     alert("success")
                     this.$router.push("/user/:id");
+                  
                     
+                } else {
+                  alert(response.status)
                 }
             })
         }
