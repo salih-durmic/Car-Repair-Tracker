@@ -44,8 +44,8 @@ CREATE TABLE service (
 CREATE TABLE requests (
     request_id SERIAL,
     service_id int NOT NULL,
-    date_reported varchar(50) NOT NULL,
-    estimated_completion_date varchar(50) NOT NULL,
+    date_reported varchar(50),
+    estimated_completion_date varchar(50),
     status varchar(50) NOT NULL,
     estimated_cost numeric,
     labor_cost numeric,
