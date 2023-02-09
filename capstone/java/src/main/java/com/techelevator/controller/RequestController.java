@@ -35,25 +35,21 @@ public class RequestController {
         BigDecimal price = pricingEngine.calculatePrice(request);
         request.setEstimatedCost(price);
 
-
-
-
-
-//        int userId = userDao.findIdByUsername(principal.getName());
-//        Car car = new Car(request.getCarId(), request.getMake(), request.getModel(),
-//                request.getColor(), request.getYear());
-//        if (car.getCarId() == 0){
-//            car.setCarId(carDao.create(userId, car.getMake(),car.getModel(),car.getColor(),car.getYear()));
-//        }
-//        Service service = new Service(request.getServiceId(),request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
-//                request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
-//                request.getScheduledMaintenance(), request.getMisc());
-//        if (service.getServiceId() == 0){
-//            service.setServiceId(serviceDao.create(car.getCarId(), request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
-//                    request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
-//                    request.getScheduledMaintenance(), request.getMisc()));
-//        }
-        requestDao.create(request.getServiceId(), LocalDate.now().toString(),request.getEstimatedCompletionDate(), request.getStatus(), request.getEstimatedCost(),request.getLabor(),request.isPaid());
+        int userId = userDao.findIdByUsername(principal.getName());
+        Car car = new Car(request.getCarId(), request.getMake(), request.getModel(),
+                request.getColor(), request.getYear());
+        if (car.getCarId() == 0){
+            car.setCarId(carDao.create(userId, car.getMake(),car.getModel(),car.getColor(),car.getYear()));
+        }
+        Service service = new Service(request.getServiceId(),request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
+                request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
+                request.getScheduledMaintenance(), request.getMisc());
+        if (service.getServiceId() == 0){
+            service.setServiceId(serviceDao.create(car.getCarId(), request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
+                    request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
+                    request.getScheduledMaintenance(), request.getMisc()));
+        }
+        requestDao.create(service.getServiceId(), LocalDate.now().toString(),request.getEstimatedCompletionDate(), request.getStatus(), request.getEstimatedCost(),request.getLabor(),request.isPaid());
 
     }
 
