@@ -53,10 +53,20 @@ public class JdbcRequestDao implements RequestDao{
     }
 
     @Override
-    public boolean create(String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, BigDecimal laborCost, boolean paid) {
-        String sql = "insert into requests (date_reported,estimated_completion_date,status,estimated_cost,labor_cost,paid) values (?,?,?,?,?,?)";
-        return jdbcTemplate.update(sql, dateReported, estimatedCompletionDate, status, estimatedCost, laborCost, paid) == 1;
+    public boolean create(int serviceId, String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, BigDecimal laborCost, boolean paid) {
+        String sql = "insert into requests (service_id,date_reported,estimated_completion_date,status,estimated_cost,labor_cost,paid) values (?,?,?,?,?,?,?)";
+        return jdbcTemplate.update(sql, serviceId, dateReported, estimatedCompletionDate, status, estimatedCost, laborCost, paid) == 1;
     }
+
+//    @Override
+//    public boolean updateEstimatedCost(int serviceId){
+//        String sql = "select * from requests r " +
+//                "join service s on r.service_id = s.service_id " +
+//                "where s.service_id = ?";
+//
+//        return jdbcTemplate.update(sql, cost, requestId, serviceId) == 1;
+//
+//    }
 
     private Request mapRowToRequest(SqlRowSet results){
         Request request = new Request();
