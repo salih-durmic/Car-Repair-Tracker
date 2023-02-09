@@ -27,21 +27,25 @@ public class RequestController {
 
     @RequestMapping(path = "/services", method = RequestMethod.POST)
     public void createRequest(@RequestBody RequestServiceDTO request, Principal principal){
-        int userId = userDao.findIdByUsername(principal.getName());
-        Car car = new Car(request.getCarId(), request.getMake(), request.getModel(),
-                request.getColor(), request.getYear());
-        if (car.getCarId() == 0){
-            car.setCarId(carDao.create(userId, car.getMake(),car.getModel(),car.getColor(),car.getYear()));
-        }
-        Service service = new Service(request.getServiceId(),request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
-                request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
-                request.getScheduledMaintenance(), request.getMisc());
-        if (service.getServiceId() == 0){
-            service.setServiceId(serviceDao.create(car.getCarId(), request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
-                    request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
-                    request.getScheduledMaintenance(), request.getMisc()));
-        }
-        requestDao.create(service.getServiceId(),request.getDateReported(),request.getEstimatedCompletionDate(), request.getStatus(), request.getEstimatedCost(),request.getLaborCost(),request.isPaid());
+
+        System.out.println(request);
+
+//        int userId = userDao.findIdByUsername(principal.getName());
+//        Car car = new Car(request.getCarId(), request.getMake(), request.getModel(),
+//                request.getColor(), request.getYear());
+//        if (car.getCarId() == 0){
+//            car.setCarId(carDao.create(userId, car.getMake(),car.getModel(),car.getColor(),car.getYear()));
+//        }
+//        Service service = new Service(request.getServiceId(),request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
+//                request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
+//                request.getScheduledMaintenance(), request.getMisc());
+//        if (service.getServiceId() == 0){
+//            service.setServiceId(serviceDao.create(car.getCarId(), request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
+//                    request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
+//                    request.getScheduledMaintenance(), request.getMisc()));
+//        }
+//        requestDao.create(service.getServiceId(),request.getDateReported(),request.getEstimatedCompletionDate(), request.getStatus(), request.getEstimatedCost(),request.getLaborCost(),request.isPaid());
+//
     }
 
     @RequestMapping(path ="/services", method = RequestMethod.GET)

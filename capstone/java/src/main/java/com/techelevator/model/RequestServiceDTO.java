@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class RequestServiceDTO {
 
@@ -28,6 +29,39 @@ public class RequestServiceDTO {
     private String status = "Pending";
     private BigDecimal estimatedCost;
     private BigDecimal laborCost;
+
+    private String labor;
+
+    @Override
+    public String toString() {
+        return "RequestServiceDTO{" +
+                "frontBrakes='" + frontBrakes + '\'' +
+                ", backBrakes='" + backBrakes + '\'' +
+                ", tires='" + tires + '\'' +
+                ", carbonAirFilter='" + carbonAirFilter + '\'' +
+                ", labor='" + labor + '\'' +
+                ", date=" + date +
+                '}';
+    }
+
+    public String getLabor() {
+        return labor;
+    }
+
+    public void setLabor(String labor) {
+        this.labor = labor;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    private LocalDate date;
+
     private boolean paid;
 
 

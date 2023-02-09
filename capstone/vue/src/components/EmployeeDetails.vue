@@ -1,9 +1,58 @@
 <template>
   <div>
-      <table>
+    {{ allServices }}
+
+    <div
+      class="service-box"
+      v-for="service in allServices"
+      v-bind:key="service.serviceId"
+    >
+      <p>Oil: {{ service.oil }}</p>
+      <p>Front Brakes: {{ service.frontBrakes }}</p>
+      <p>Back Brakes: {{ service.backBrakes }}</p>
+      <p>Tires: {{ service.tires }}</p>
+
+      <form v-on:submit.prevent="saveRequest1(service.serviceId)">
+
+        <input type="text" disabled  v-model="service.serviceId"/>
+
+        <input
+          id="completion-date"
+          name="completion-date"
+          class="completion-date-input"
+          type="date"
+          v-model="service.date"
+        />
+        <select v-model="service.labor">
+          <option value="">--- Select Labor Cost ---</option>
+          <option value="Basic Labor">Basic Labor</option>
+          <option value="Half Day Labor">Half Day Labor</option>
+          <option value="Full Day Labor">Full Day Labor</option>
+        </select>
+
+        <input class="estimated-cost-input" type="text" placeholder="Estimated Cost" v-model="service.estimatedCost" />
+
+        <select v-model="service.status">
+          <option value="">--- Select Status ---</option>
+          <option value="Pending">Pending</option>
+          <option value="Active">Active</option>
+          <option value="Completed">Completed</option>
+        </select>
+
+        Paid:
+
+        <input type="checkbox" v-model="service.paid"/>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- 1st Draft of doing page -->
+
+    <table>
       <thead>
-        <tr >
-           <!-- <th>Name</th> -->
+        <tr>
+          <!-- <th>Name</th> -->
           <!-- <th>Phone Number</th> -->
           <!-- <th>Make</th> -->
           <!-- <th>Model</th> -->
@@ -14,7 +63,7 @@
           <th>Back Brakes</th>
           <th>Tires</th>
 
-          <th>Date Reported</th>
+          <!-- <th>Date Reported</th> -->
           <th>Estimated Completion</th>
           <th>Labor</th>
           <th>Estimated Cost</th>
@@ -23,46 +72,54 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="service in this.$store.state.serviceList" v-bind:key="service.serviceId">
-             <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
-            <!-- <td></td> -->
-            <!-- <td></td> -->
-            <!-- <td></td> -->
-            <!-- <td></td> -->
-            <!-- <td></td> -->
-            <td>{{service.oil}}</td>
-            <td>{{service.frontBrakes}}</td>
-          <td>{{service.backBrakes}}</td>
-          <td>{{service.tires}}</td>
+        <tr
+          v-for="service in this.$store.state.serviceList"
+          v-bind:key="service.serviceId"
+        >
+          <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
 
-            <td>Today's date</td>
-            
-            <td><input id='completion-date' name='completion-date' class="completion-date-input" type="date" v-model="serviceRequest.date" /></td>
-            <td><select v-model="serviceRequest.laborCost">
-        <option value="">--- Select Labor Cost ---</option>
-        <option value="Basic Labor">Basic Labor</option>
-        <option value="Half Day Labor">Half Day Labor</option>
-        <option value="Full Day Labor">Full Day Labor</option>
-        </select></td>
-        
-            <td>$$$</td>
-            <td><select v-model="serviceRequest.status">
-        <option value="">--- Select Status ---</option>
-        <option value="Pending">Pending</option>
-        <option value="Active">Active</option>
-        <option value="Completed">Completed</option>
-        </select></td>
-            <td>No</td>
-             <td><button v-on:click="saveRequest" type="submit">Submit</button></td>
+          <td>{{ service.oil }}</td>
+          <td>{{ service.frontBrakes }}</td>
+          <td>{{ service.backBrakes }}</td>
+          <td>{{ service.tires }}</td>
 
-             
-            
+          <!-- <td>Today's date</td> -->
+
+          <td>
+            <form v-on:submit.prevent="saveRequest">
+              <input
+                id="completion-date"
+                name="completion-date"
+                class="completion-date-input"
+                type="date"
+                v-model="serviceRequest.date"
+              />
+              <select>
+                <option value="">--- Select Labor Cost ---</option>
+                <option value="Basic Labor">Basic Labor</option>
+                <option value="Half Day Labor">Half Day Labor</option>
+                <option value="Full Day Labor">Full Day Labor</option>
+              </select>
+
+              $$$
+              <select>
+                <option value="">--- Select Status ---</option>
+                <option value="Pending">Pending</option>
+                <option value="Active">Active</option>
+                <option value="Completed">Completed</option>
+              </select>
+              No
+              <button type="submit">Submit</button>
+            </form>
+          </td>
         </tr>
       </tbody>
-      </table>
-
-
-
+    </table>
   </div>
 </template>
 
@@ -70,50 +127,71 @@
 import repairsService from "../services/RepairsService";
 
 export default {
-    name: 'employee-details',
-    data() {
+  name: "employee-details",
+  data() {
     return {
+      allServices: [],
       serviceRequest: {
-                completionDate: '',
-                laborCost: '',
-                estimatedCost: '',
-                status: '',
-                paid: false
-     
-    }
-  }
-    },
-    methods: {
-        saveRequest() {
-           
-            alert("button clicked")
-            
+        requestId: -1,
+        serviceId: -1,
+        completionDate: "",
+        laborCost: "",
+        estimatedCost: "",
+        status: "",
+        paid: false,
+      },
+    };
+  },
+  methods: {
+    saveRequest1(serviceId) {
+      console.log(this.allServices)
+      console.log(serviceId);
+        let tempArr = this.allServices.filter( (obj) => obj.serviceId == serviceId);
+        let requestObj = tempArr[0];
+        console.log("DEBUG")
+        console.log(requestObj);
 
-            repairsService.create(this.serviceRequest).then((response) => {
-                if(response.status===200) {
-                    alert("success")
-                    this.$router.push("/employee/:id");
-                  
-                    
-                } else {
-                  alert(response.status)
-                }
-            })
-        }
+        repairsService.create(requestObj).then(
+          (response) => {
+            if(response.status == 200) {
+              window.alert("success");
+              this.$router.push("/employee/:id");
+            }
+          }
+        );
+
     },
-    
+    saveRequest() {
+      alert("button clicked");
+
+      repairsService.create(this.serviceRequest).then((response) => {
+        if (response.status === 200) {
+          alert("success");
+          this.$router.push("/employee/:id");
+        } else {
+          alert(response.status);
+        }
+      });
+    },
+  },
+
   created() {
     repairsService.getServiceList().then((response) => {
-      console.log(response)
+      console.log(response);
+      this.allServices = response.data.services;
       this.$store.commit("SET_SERVICELIST", response.data.services);
       this.$store.commit("SET_REQUESTS", response.data.requests);
     });
-  }
-
-
-}
+  },
+};
 </script>
 
 <style>
-
+.service-box {
+  width: 500px;
+  height: 350px;
+  margin: 20px;
+  padding: 20px;
+  background-color: cornflowerblue;
+}
 </style>
