@@ -27,7 +27,7 @@ public class RequestServiceDTO {
     private String estimatedCompletionDate;
     private String status = "Pending";
     private BigDecimal estimatedCost;
-    private BigDecimal laborCost;
+    private String labor;
     private boolean paid;
 
 
@@ -216,12 +216,12 @@ public class RequestServiceDTO {
         this.estimatedCost = estimatedCost;
     }
 
-    public BigDecimal getLaborCost() {
-        return laborCost;
+    public String getLabor() {
+        return labor;
     }
 
-    public void setLaborCost(BigDecimal laborCost) {
-        this.laborCost = laborCost;
+    public void setLabor(String labor) {
+        this.labor = labor;
     }
 
     public boolean isPaid() {
