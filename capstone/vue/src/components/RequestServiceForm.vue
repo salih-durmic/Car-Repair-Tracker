@@ -3,11 +3,11 @@
       <form class="request-service-form" v-on:submit.prevent="saveService">
 
             <!-- need a v-model in select that selects the right car -->
-          <select >
+          <!-- <select >
         <option value="">--- Select your vehicle ---</option>
         <option value="???">Vehicle 1</option>
         
-      </select>
+      </select> -->
 
       <!--<router-link v-bind:to="{name: 'addCar'}">Add New Car</router-link>-->
       
