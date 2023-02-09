@@ -2,8 +2,8 @@
   <div>
       <table>
       <thead>
-        <tr>
-           <th>Name</th>
+        <tr >
+           <!-- <th>Name</th> -->
           <!-- <th>Phone Number</th> -->
           <!-- <th>Make</th> -->
           <!-- <th>Model</th> -->
@@ -23,17 +23,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr >
-             <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td>
+        <tr v-for="service in this.$store.state.serviceList" v-bind:key="service.serviceId">
+             <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
             <!-- <td></td> -->
             <!-- <td></td> -->
             <!-- <td></td> -->
             <!-- <td></td> -->
             <!-- <td></td> -->
-            <td>{{this.$store.state.services.oil}}</td>
-            <td>{{this.$store.state.services.frontBrakes}}</td>
-          <td>{{this.$store.state.services.backBrakes}}</td>
-          <td>{{this.$store.state.services.tires}}</td>
+            <td>{{service.oil}}</td>
+            <td>{{service.frontBrakes}}</td>
+          <td>{{service.backBrakes}}</td>
+          <td>{{service.tires}}</td>
 
             <td>Today's date</td>
             
@@ -103,9 +103,9 @@ export default {
     },
     
   created() {
-    repairsService.getServices(2).then((response) => {
+    repairsService.getServiceList().then((response) => {
       console.log(response)
-      this.$store.commit("SET_SERVICES", response.data.service);
+      this.$store.commit("SET_SERVICELIST", response.data.services);
       this.$store.commit("SET_REQUESTS", response.data.requests);
     });
   }

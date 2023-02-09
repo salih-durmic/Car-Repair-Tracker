@@ -80,7 +80,7 @@ export default {
                 tires: '',
 
                 body: '',
-                date:''
+                
                 
             }
         }
