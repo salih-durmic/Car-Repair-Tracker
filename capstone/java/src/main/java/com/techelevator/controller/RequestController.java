@@ -29,7 +29,7 @@ public class RequestController {
     private RequestDao requestDao;
 
     @RequestMapping(path = "/services", method = RequestMethod.POST)
-    public void createRequest(@RequestBody RequestServiceDTO request, Principal principal){
+    public void createRequest(@RequestBody RequestServiceDTO request, Principal principal) {
 
 
         PricingEngine pricingEngine = new PricingEngine();
@@ -37,32 +37,30 @@ public class RequestController {
         request.setEstimatedCost(price);
 
 
-
-
-
-
         int userId = userDao.findIdByUsername(principal.getName());
         Car car = new Car(request.getCarId(), request.getMake(), request.getModel(),
                 request.getColor(), request.getYear());
-        if (car.getCarId() == 0){
-           car.setCarId(carDao.create(userId, car.getMake(),car.getModel(),car.getColor(),car.getYear()));
+        if (car.getCarId() == 0) {
+
+            car.setCarId(carDao.create(userId, car.getMake(), car.getModel(), car.getColor(), car.getYear()));
+
         }
-        Service service = new Service(request.getServiceId(),request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
+        Service service = new Service(request.getServiceId(), request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
                 request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
                 request.getScheduledMaintenance(), request.getMisc());
-        if (service.getServiceId() == 0){
+        if (service.getServiceId() == 0) {
             service.setServiceId(serviceDao.create(car.getCarId(), request.getOil(), request.getFrontBrakes(), request.getBackBrakes(), request.getTires(),
                     request.getBody(), request.getCarbonAirFilter(), request.getBattery(),
-                   request.getScheduledMaintenance(), request.getMisc()));
+                    request.getScheduledMaintenance(), request.getMisc()));
         }
 
-        requestDao.create(service.getServiceId(), LocalDate.now().toString(),request.getEstimatedCompletionDate(), request.getStatus(), request.getEstimatedCost(),request.getLabor(),request.isPaid());
+        requestDao.create(service.getServiceId(), LocalDate.now().toString(), request.getEstimatedCompletionDate(), request.getStatus(), request.getEstimatedCost(), request.getLabor(), request.isPaid());
 
 
     }
 
-    @RequestMapping(path ="/services", method = RequestMethod.GET)
-    public GetAllDto getAllDto(){
+    @RequestMapping(path = "/services", method = RequestMethod.GET)
+    public GetAllDto getAllDto() {
         GetAllDto getAll = new GetAllDto();
         List<User> users = userDao.listUsers();
         List<Car> cars = carDao.findAll();
@@ -75,7 +73,7 @@ public class RequestController {
         return getAll;
     }
 
-    @RequestMapping(path="/services/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/services/{id}", method = RequestMethod.GET)
     public GetServiceDTO getRequestService(@PathVariable int id) {
         GetServiceDTO getServiceDTO = new GetServiceDTO();
         Service service = serviceDao.getServiceById(id);
@@ -91,8 +89,8 @@ public class RequestController {
         return cars;
     }
 
-    @RequestMapping(path="/user", method =RequestMethod.GET)
-    public List<User> listUsers(){
+    @RequestMapping(path = "/user", method = RequestMethod.GET)
+    public List<User> listUsers() {
         return userDao.listUsers();
     }
 //

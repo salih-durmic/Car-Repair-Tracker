@@ -48,25 +48,25 @@ public class PricingEngine {
                 cost = cost.add(new BigDecimal("129.00"));
             } else if (tires.equals("x2 Firestone")){
                 cost = cost.add(new BigDecimal("258.00"));
-            } else if (tires.equals("3x Firestone")){
+            } else if (tires.equals("x3 Firestone")){
                 cost = cost.add(new BigDecimal("387.00"));
             } else if (tires.equals("x4 Firestone")){
                 cost = cost.add(new BigDecimal("516.00"));
             } else if (tires.equals("x1 Bridgestone")){
                 cost = cost.add(new BigDecimal("159.00"));
-            } else if (tires.equals("2x Bridgestone")){
+            } else if (tires.equals("x2 Bridgestone")){
                 cost = cost.add(new BigDecimal("318.00"));
-            } else if (tires.equals("3x Bridgestone")){
+            } else if (tires.equals("x3 Bridgestone")){
                 cost = cost.add(new BigDecimal("477.00"));
-            } else if (tires.equals("4x Bridgestone")){
+            } else if (tires.equals("x4 Bridgestone")){
                 cost = cost.add(new BigDecimal("636.00"));
-            } else if (tires.equals("1x WeatherGuard")){
+            } else if (tires.equals("x1 WeatherGuard")){
                 cost = cost.add(new BigDecimal("179.00"));
-            } else if (tires.equals("2x WeatherGuard")){
+            } else if (tires.equals("x2 WeatherGuard")){
                 cost = cost.add(new BigDecimal("358.00"));
             } else if (tires.equals("x3 WeatherGuard")){
                 cost = cost.add(new BigDecimal("537.00"));
-            } else if (tires.equals("4x WeatherGuard")){
+            } else if (tires.equals("x4 WeatherGuard")){
                 cost = cost.add(new BigDecimal("716.00"));
             }
         }
