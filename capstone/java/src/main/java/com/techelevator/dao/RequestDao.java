@@ -11,7 +11,7 @@ public interface RequestDao {
 
     Request getRequestById(int requestId);
 
-    boolean create(int serviceId, String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, BigDecimal laborCost, boolean paid);
+    boolean create(int serviceId, String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, String labor, boolean paid);
 
 //    boolean updateEstimatedCost(BigDecimal cost, int requestId, int serviceId);
 

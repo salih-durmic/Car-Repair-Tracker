@@ -9,18 +9,18 @@ public class Request {
     private String estimatedCompletionDate;
     private String status;
     private BigDecimal estimatedCost;
-    private BigDecimal laborCost;
+    private String labor;
     private boolean paid;
 
     public Request() {}
 
-    public Request(int requestId, String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, BigDecimal laborCost, boolean paid) {
+    public Request(int requestId, String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, String labor, boolean paid) {
         this.requestId = requestId;
         this.dateReported = dateReported;
         this.estimatedCompletionDate = estimatedCompletionDate;
         this.status = status;
         this.estimatedCost = estimatedCost;
-        this.laborCost = laborCost;
+        this.labor = labor;
         this.paid = paid;
     }
 
@@ -64,12 +64,12 @@ public class Request {
         this.estimatedCost = estimatedCost;
     }
 
-    public BigDecimal getLaborCost() {
-        return laborCost;
+    public String getLabor() {
+        return labor;
     }
 
-    public void setLaborCost(BigDecimal laborCost) {
-        this.laborCost = laborCost;
+    public void setLabor(String labor) {
+        this.labor = labor;
     }
 
     public boolean isPaid() {
@@ -88,7 +88,7 @@ public class Request {
                 ", estimatedCompletionDate='" + estimatedCompletionDate + '\'' +
                 ", status='" + status + '\'' +
                 ", estimatedCost=" + estimatedCost +
-                ", laborCost=" + laborCost +
+                ", labor='" + labor + '\'' +
                 ", paid=" + paid +
                 '}';
     }

@@ -53,9 +53,9 @@ public class JdbcRequestDao implements RequestDao{
     }
 
     @Override
-    public boolean create(int serviceId, String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, BigDecimal laborCost, boolean paid) {
-        String sql = "insert into requests (service_id,date_reported,estimated_completion_date,status,estimated_cost,labor_cost,paid) values (?,?,?,?,?,?,?)";
-        return jdbcTemplate.update(sql, serviceId, dateReported, estimatedCompletionDate, status, estimatedCost, laborCost, paid) == 1;
+    public boolean create(int serviceId, String dateReported, String estimatedCompletionDate, String status, BigDecimal estimatedCost, String labor, boolean paid) {
+        String sql = "insert into requests (service_id,date_reported,estimated_completion_date,status,estimated_cost,labor,paid) values (?,?,?,?,?,?,?)";
+        return jdbcTemplate.update(sql, serviceId, dateReported, estimatedCompletionDate, status, estimatedCost, labor, paid) == 1;
     }
 
 //    @Override
@@ -75,7 +75,7 @@ public class JdbcRequestDao implements RequestDao{
         request.setEstimatedCompletionDate(results.getString("estimated_completion_date"));
         request.setStatus(results.getString("status"));
         request.setEstimatedCost(results.getBigDecimal("estimated_cost"));
-        request.setLaborCost(results.getBigDecimal("labor_cost"));
+        request.setLabor(results.getString("labor"));
         request.setPaid(results.getBoolean("paid"));
         return request;
     }

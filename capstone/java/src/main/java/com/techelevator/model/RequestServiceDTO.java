@@ -28,39 +28,8 @@ public class RequestServiceDTO {
     private String estimatedCompletionDate;
     private String status = "Pending";
     private BigDecimal estimatedCost;
-    private BigDecimal laborCost;
 
     private String labor;
-
-    @Override
-    public String toString() {
-        return "RequestServiceDTO{" +
-                "frontBrakes='" + frontBrakes + '\'' +
-                ", backBrakes='" + backBrakes + '\'' +
-                ", tires='" + tires + '\'' +
-                ", carbonAirFilter='" + carbonAirFilter + '\'' +
-                ", labor='" + labor + '\'' +
-                ", date=" + date +
-                '}';
-    }
-
-    public String getLabor() {
-        return labor;
-    }
-
-    public void setLabor(String labor) {
-        this.labor = labor;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    private LocalDate date;
 
     private boolean paid;
 
@@ -250,12 +219,12 @@ public class RequestServiceDTO {
         this.estimatedCost = estimatedCost;
     }
 
-    public BigDecimal getLaborCost() {
-        return laborCost;
+    public String getLabor() {
+        return labor;
     }
 
-    public void setLaborCost(BigDecimal laborCost) {
-        this.laborCost = laborCost;
+    public void setLabor(String labor) {
+        this.labor = labor;
     }
 
     public boolean isPaid() {
