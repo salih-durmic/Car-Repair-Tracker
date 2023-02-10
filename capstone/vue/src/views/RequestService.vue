@@ -121,9 +121,7 @@ export default {
   margin-left: 15px;
   margin-right: 10px;
 } */
-#submitRequestButton {
-  font-size: 30px;
-}
+
 .arrow {
   border: solid black;
   border-width: 0 10px 10px 0;
