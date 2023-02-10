@@ -28,7 +28,7 @@
       <article id="needHelp">
         <h1>Need Help?</h1>
         <body>
-          <button id="serviceButton">Request Service</button>
+          <router-link v-bind:to="{ name: 'requestService' }"><button id="serviceButton">Request Service</button></router-link>
         </body>
         <h1>About Us</h1>
         <body>
