@@ -2,65 +2,90 @@
 <template>
   <div id="login" class="text-center">
     <section id="entirePage">
-    <section id="leftSide">
-      <article id="topLeft">
-        <p>CUSTOMER LOGIN</p>
-      </article>
- <article id="bottomLeft">
-   <h1 class="h3 mb-3 font-weight-normal">Welcome Back</h1>
-   <h3>Sign in to save your car and your cash</h3>
-    <form class="form-signin" @submit.prevent="login"> 
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only"></label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      /> <br> <br> <br>
-      <label for="password" class="sr-only"></label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      /> <br> <br> <br>
-      <button type="submit">Sign in</button>
-      <div id="needAccount">
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      </div>
-    </form>
-    </article>
-    </section>
-    <section id="rightSide">
-      <h1>Member Benefits:</h1>
-      <h3>Full tires and Brakes - SAVE 2.5%</h3>
-      <p>Buy 4 WeatherGuard tires, front and rear firestone brakes and save 10% off your entire order!</p>
-      <h3>The Works - SAVE 5%</h3>
-      <p>Buy 4 WeatherGuard tires, front and rear firestone brakes, and oil change (any type), air filter (any type), wheel alignment, inspection, and Emmisions stickes and save 5% off your entire order!</p>
-      <div>
+      <section id="leftSide">
+        <article id="topLeft">
+          <p>CUSTOMER LOGIN</p>
+        </article>
+        <article id="bottomLeft">
+          <h1 class="h3 mb-3 font-weight-normal">Welcome Back</h1>
+          <h3>Sign in to save your car and your cash</h3>
+          <form class="form-signin" @submit.prevent="login">
+            <div
+              class="alert alert-danger"
+              role="alert"
+              v-if="invalidCredentials"
+            >
+              Invalid username and password!
+            </div>
+            <div
+              class="alert alert-success"
+              role="alert"
+              v-if="this.$route.query.registration"
+            >
+              Thank you for registering, please sign in.
+            </div>
+            <label for="username" class="sr-only"></label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              placeholder="Username"
+              v-model="user.username"
+              required
+              autofocus
+            />
+            <br />
+            <br />
+            <br />
+            <label for="password" class="sr-only"></label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="user.password"
+              required
+            />
+            <br />
+            <br />
+            <br />
+            <button type="submit">Sign in</button>
+            <div id="needAccount">
+              <router-link :to="{ name: 'register' }"
+                >Need an account?</router-link
+              >
+            </div>
+          </form>
+        </article>
+      </section>
+      <section id="rightSide">
+        <h1>Member Benefits:</h1>
+
+        <h3>
+          <!-- <div id="dollarSign"> -->
+            <img
+              id="dollarSign"
+              src="https://banner2.cleanpng.com/20180515/xbw/kisspng-dollar-sign-computer-icons-clip-art-5afb69aec09a58.8818178315264260307889.jpg"
+              style="width 45px; height: 45px;"
+            />
+          <!-- </div> -->
+          Full tires and Brakes - SAVE 2.5%
+        </h3>
         <p>
-          Share with your friends:
+          Buy 4 WeatherGuard tires, front and rear firestone brakes and save 10%
+          off your entire order!
         </p>
-      </div>
-      <button>
-        Send Link
-      </button>
-    </section>
+        <h3>The Works - SAVE 5%</h3>
+        <p>
+          Buy 4 WeatherGuard tires, front and rear firestone brakes, and oil
+          change (any type), air filter (any type), wheel alignment, inspection,
+          and Emmisions stickes and save 5% off your entire order!
+        </p>
+        <div>
+          <p>Share with your friends:</p>
+        </div>
+        <button>Send Link</button>
+      </section>
     </section>
   </div>
 </template>
@@ -140,107 +165,108 @@ export default {
 };
 </script>
 <style>
-#login{
-  border: 6px solid gray ;
+#login {
+  border: 6px solid gray;
 }
-#entirePage{
+#entirePage {
   display: flex;
-  flex-direction: row ;
+  flex-direction: row;
 }
-#leftSide{
-flex-basis: 50%;
-
+#leftSide {
+  flex-basis: 50%;
 }
-#topLeft{
-
+#topLeft {
 }
-#bottomLeft{
+#bottomLeft {
   padding-left: 20px;
   padding-right: 60px;
 }
-#topLeft p{
+#topLeft p {
   margin: auto;
-font-size: 60px;
-background-color: lightgray;
-padding: 70px 50px;
-text-align: center;
+  font-size: 60px;
+  background-color: lightgray;
+  padding: 70px 50px;
+  text-align: center;
 }
-#rightSide{
+#rightSide {
   display: flex;
   flex-basis: 50%;
   background-color: rgb(161, 161, 161);
   flex-direction: column;
   padding-bottom: 40px;
 }
-#rightSide h1{
+#rightSide h1 {
   padding-left: 12%;
   font-size: 45px;
 }
-#rightSide h3{
+#rightSide h3 {
   text-align: right;
   padding-right: 14%;
   font-size: 27px;
 }
-#rightSide p{
+#rightSide p {
   font-size: 22px;
   text-align: left;
 }
-#rightSide div p{
+#rightSide div p {
   text-align: center;
-  font-weight:bold;
+  font-weight: bold;
   font-size: x-large;
 }
-#rightSide button{
+#rightSide button {
   margin: auto;
   padding: 4% 12%;
   background-color: rgb(128, 128, 128);
   border: 5px solid rgb(83, 83, 83);
   font-size: 40px;
 }
-.form-signin{
+.form-signin {
   display: flex;
   flex-direction: column;
 }
-.form-signin button{
+.form-signin button {
   font-size: xx-large;
   padding: 30px 30px;
   width: 60%;
   margin: auto;
   border: 6px solid rgb(102, 102, 102);
 }
-#bottomLeft h1{
+#bottomLeft h1 {
   text-align: left;
   padding: 20px 20px;
   margin: auto;
   font-size: 50px;
 }
-#bottomLeft h3{
-margin: auto;
-text-align: left;
-font-weight: lighter;
-font-size:30px;
-padding-left: 20px;
-padding-bottom: 40px;
+#bottomLeft h3 {
+  margin: auto;
+  text-align: left;
+  font-weight: lighter;
+  font-size: 30px;
+  padding-left: 20px;
+  padding-bottom: 40px;
 }
-#username{
+#username {
   text-align: left;
   font-size: xx-large;
   border: 5px solid grey;
   padding: 10px 20px;
   border-radius: 5px;
 }
-#password{
+#password {
   text-align: left;
   font-size: xx-large;
   border: 5px solid grey;
   padding: 10px 20px;
   border-radius: 5px;
-
 }
-#needAccount{
+#needAccount {
   text-align: center;
   font-size: large;
   margin: auto;
   padding: 20px 20px;
+}
+#dollarSign{
+position: relative;
+flex-basis: auto;
 }
 </style>
