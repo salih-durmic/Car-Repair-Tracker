@@ -110,11 +110,11 @@ export default {
   },
   methods: {
     saveService() {
-      alert("button clicked");
+      // alert("button clicked");
 
       repairsService.create(this.serviceRequest).then((response) => {
         if (response.status === 200) {
-          alert("success");
+          // alert("success");
 
           console.log(this.$store.state.user.id);
 

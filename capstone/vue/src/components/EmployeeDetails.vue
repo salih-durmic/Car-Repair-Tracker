@@ -4,9 +4,10 @@
       <!-- {{ allServices }} -->
 
       <div id="userAndCars" class="user" v-for="user in this.users" v-bind:key="user.id">
+        <div id="userFandL">
         <p id="userFirstAndLast">Name: {{ user.firstName }} {{ user.lastName }} <br>
         Number: {{ user.phoneNumber }}</p>
-
+</div>
         <!-- <p>Car Object {{ user.cars.length }}</p> -->
         <!-- {{hasCarsFromUser(user)}}  -->
         <!-- v-show="hasCarsFromUser(user)" -->
@@ -281,6 +282,9 @@ export default {
 </script>
 
 <style>
+#userFandL{
+  text-align: center;
+}
 .service-box {
   width: 500px;
   height: 350px;
@@ -297,12 +301,14 @@ export default {
 #userAndCars{
 display: flex;
 flex-direction: row;
-justify-content: center;
+justify-content: left;
 
 }
 #userFirstAndLast{
   font-size: 25px;
   font-weight:bolder;
-  text-align: left;
+  /* text-align: center; */
+  padding: 20px;
+  padding-top: 0px;
 }
 </style>

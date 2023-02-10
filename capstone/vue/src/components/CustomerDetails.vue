@@ -1,16 +1,16 @@
 <template>
   <div class="details">
-      <h1>Customer Vehicle Details</h1>
+      <h1 style="font-size: 46px;">Customer Vehicle Details</h1>
       <table>
         <thead>
             <tr>
                 <!-- <th>Name</th> -->
-                <th>Make</th>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Color</th>
+                <th class="make">Make</th>
+                <th class="model">Model</th>
+                <th class="year">Year</th>
+                <th class="color">Color</th>
 
-                <th>Issues Reported</th>
+                <th class="service">Service Details</th>
                 <!-- <th>Estimated Repair Cost</th> -->
                 <!-- <th>Ready for Pick-Up</th> -->
             </tr>
@@ -20,13 +20,14 @@
                 
                 <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
                 <!-- <div> -->
-                        <td>{{car.make}}</td>
-                        <td>{{car.model}}</td>
-                        <td>{{car.year}}</td>
-                        <td>{{car.color}}</td>
+                  
+                        <td class="make">{{car.make}}</td>
+                        <td class="model">{{car.model}}</td>
+                        <td class="year">{{car.year}}</td>
+                        <td class="color">{{car.color}}</td>
                        
                        
-                         <td><router-link v-bind:to="{name: 'carServices', params: {id: car.carId}}">number</router-link></td>
+                         <td class="service"><router-link v-bind:to="{name: 'carServices', params: {id: car.carId}}">Details</router-link></td>
                         <!-- <td>???</td> -->
                         <!-- <td>No</td> -->
 
@@ -62,5 +63,82 @@ export default {
 </script>
 
 <style>
+#details{
+justify-content: center;
+text-align: center;
+}
+table{
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: center;
+  align-content: center;
+  /* margin: auto; */
 
+}
+table thead{
+  padding: 2%;
+  text-align: left;
+  justify-content: left;
+}
+table thead tr{
+    display: flex;
+  flex-direction: column;
+}
+table tbody{
+  padding: 2%;
+     display: flex;
+  flex-direction: row;
+}
+table tbody tr{
+   display: flex;
+  flex-direction: column;
+}
+table tbody tr div{
+     display: flex;
+  flex-direction: column;
+}
+table thead th{
+  font-size: 30px;
+}
+table tbody td{
+  /* border: solid 1px black; */
+  padding: 20px 20px;
+  margin: 10px 0px;
+  font-size: 24px;
+}
+.make{
+  display: flex;
+  padding: 10px 20px;
+  margin: auto;
+  
+}
+.model{
+  display: flex;
+    padding: 10px 20px;
+      margin: auto;
+
+
+}
+.year{
+  display: flex;
+    padding: 10px 20px;
+      margin: auto;
+
+
+}
+.color{
+  display: flex;
+    padding: 10px 20px;
+      margin: auto;
+
+
+}
+.service{
+  display: flex;
+    padding: 10px 20px;
+      margin: 5px;
+
+
+}
 </style>
