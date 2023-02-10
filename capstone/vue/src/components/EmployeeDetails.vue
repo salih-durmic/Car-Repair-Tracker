@@ -1,6 +1,8 @@
 <template>
   <div class="root">
-    {{ allServices }}
+
+    <div v-if="isLoaded">
+    <!-- {{ allServices }} -->
 
      <div class="user" v-for="user in this.users" v-bind:key="user.id">
 
@@ -118,22 +120,25 @@
 
           <!-- 1st Draft of doing page -->
 
-           <table>
+           <!-- <table>
             <thead>
-              <tr>
+              <tr> -->
+
                 <!-- <th>Name</th> -->
                 <!-- <th>Phone Number</th> -->
                 <!-- <th>Make</th> -->
                 <!-- <th>Model</th> -->
                 <!-- <th>Year</th> -->
                 <!-- <th>Color</th> -->
-                <th>Oil</th>
+                <!-- <th>Oil</th>
                 <th>Front Brakes</th>
                 <th>Back Brakes</th>
-                <th>Tires</th>
+                <th>Tires</th> -->
 
                 <!-- <th>Date Reported</th> -->
-                <th>Estimated Completion</th>
+
+
+                <!-- <th>Estimated Completion</th>
                 <th>Labor</th>
                 <th>Estimated Cost</th>
                 <th>Status</th>
@@ -141,25 +146,25 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="service in this.$store.state.serviceList"
+              <tr -->
+                <!-- v-for="service in this.$store.state.serviceList"
                 v-bind:key="service.serviceId"
-              >
+              > -->
                 <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
                 <!-- <td></td> -->
                 <!-- <td></td> -->
                 <!-- <td></td> -->
                 <!-- <td></td> -->
                 <!-- <td></td> -->
-
+<!-- 
                 <td>{{ service.oil }}</td>
                 <td>{{ service.frontBrakes }}</td>
                 <td>{{ service.backBrakes }}</td>
-                <td>{{ service.tires }}</td>
+                <td>{{ service.tires }}</td> -->
 
                 <!-- <td>Today's date</td> -->
 
-                <td>
+                <!-- <td>
                   <form v-on:submit.prevent="saveRequest">
                     <input
                       id="completion-date"
@@ -188,8 +193,8 @@
                 </td>
               </tr>
             </tbody>
-          </table> 
-      
+          </table>  -->
+    </div>
   </div>
 </template>
 
@@ -201,6 +206,7 @@ export default {
   name: "employee-details",
   data() {
     return {
+      isLoaded: false,
       users: [],
       allServices: [],
       serviceRequest: {
@@ -265,7 +271,9 @@ export default {
               let services = response.data;
               this.users[i].cars[j].services = services;
             });
+
           }
+          
         });
       }
       this.$store.commit("SET_USERS", this.users);
@@ -277,6 +285,10 @@ export default {
       this.$store.commit("SET_SERVICELIST", response.data.services);
       this.$store.commit("SET_REQUESTS", response.data.requests);
     });
+
+    const delayInMilliseconds = 300;
+    setTimeout(()=> this.isLoaded = true, delayInMilliseconds);
+
   },
 };
 </script>
