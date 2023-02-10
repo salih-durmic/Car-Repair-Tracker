@@ -4,7 +4,7 @@
     <section id="entirePage">
       <section id="leftSide">
         <article id="topLeft">
-          <p>CUSTOMER LOGIN</p>
+          <p>MEMBER LOGIN</p>
         </article>
         <article id="bottomLeft">
           <h1 class="h3 mb-3 font-weight-normal">Welcome Back</h1>
@@ -63,11 +63,11 @@
 
         <h3>
           <!-- <div id="dollarSign"> -->
-            <img
-              id="dollarSign"
-              src="https://banner2.cleanpng.com/20180515/xbw/kisspng-dollar-sign-computer-icons-clip-art-5afb69aec09a58.8818178315264260307889.jpg"
-              style="width 45px; height: 45px;"
-            />
+          <img
+            id="dollarSign"
+            src="https://thumbs.dreamstime.com/b/outline-coins-icon-isolated-grey-background-line-money-symbol-web-site-design-logo-app-editable-stroke-vector-illustra-95398130.jpg"
+            style="width 70px; height: 90px; background-color:grey;"
+          />
           <!-- </div> -->
           Full tires and Brakes - SAVE 2.5%
         </h3>
@@ -75,7 +75,13 @@
           Buy 4 WeatherGuard tires, front and rear firestone brakes and save 10%
           off your entire order!
         </p>
-        <h3>The Works - SAVE 5%</h3>
+        <h3>
+          <img
+            id="dollarSign"
+            src="https://thumbs.dreamstime.com/b/outline-coins-icon-isolated-grey-background-line-money-symbol-web-site-design-logo-app-editable-stroke-vector-illustra-95398130.jpg"
+            style="width 70px; height: 90px; background-color:grey;"
+          />The Works - SAVE 5%
+        </h3>
         <p>
           Buy 4 WeatherGuard tires, front and rear firestone brakes, and oil
           change (any type), air filter (any type), wheel alignment, inspection,
@@ -184,20 +190,21 @@ export default {
 #topLeft p {
   margin: auto;
   font-size: 60px;
-  background-color: lightgray;
+  background-color: rgb(117, 117, 117);
   padding: 70px 50px;
   text-align: center;
 }
 #rightSide {
   display: flex;
   flex-basis: 50%;
-  background-color: rgb(161, 161, 161);
+  background-color: rgb(213, 213, 213);
   flex-direction: column;
   padding-bottom: 40px;
 }
 #rightSide h1 {
   padding-left: 12%;
-  font-size: 45px;
+  font-size: 60px;
+  margin-bottom: 0px;
 }
 #rightSide h3 {
   text-align: right;
@@ -207,11 +214,13 @@ export default {
 #rightSide p {
   font-size: 22px;
   text-align: left;
+  margin-bottom: 0px;
 }
 #rightSide div p {
   text-align: center;
   font-weight: bold;
   font-size: x-large;
+  margin-bottom: 0px;
 }
 #rightSide button {
   margin: auto;
@@ -265,8 +274,10 @@ export default {
   margin: auto;
   padding: 20px 20px;
 }
-#dollarSign{
-position: relative;
-flex-basis: auto;
+#dollarSign {
+  position: relative;
+  right: 70px;
+  top: 35px;
+  flex-basis: auto;
 }
 </style>

@@ -3,12 +3,15 @@
   <div id="wholePage">
     <div id="topImage">
       <article id="topImageH1">
+        <header></header>
         <h1>Tell us what kind of car you are looking to service</h1>
+        
+        <p><i class="arrow"></i></p>
       </article>
-    </div>
-
+    </div >
+    <div id="bottomForm">
     <request-service-form />
-
+</div>
     <!-- <select v-model="car.type">
         <option value="">--- Select your vehicle ---</option>
         <option value="???">{{car.make}}</option>
@@ -67,7 +70,7 @@ export default {
 }
 #topImage article {
   margin: auto;
-  padding-top: 100px;
+  padding-top: 10px;
   height: 200px;
   font-size: 40px;
 }
@@ -99,7 +102,7 @@ export default {
   flex-direction: column;
   margin: auto;
 }
-#typeOfService {
+/* #typeOfService {
   font-size: 25px;
   display: flex;
   justify-content: space-evenly;
@@ -117,8 +120,19 @@ export default {
 #dropOffDate {
   margin-left: 15px;
   margin-right: 10px;
-}
+} */
 #submitRequestButton {
   font-size: 30px;
+}
+.arrow {
+  border: solid black;
+  border-width: 0 10px 10px 0;
+  display: inline-block;
+  padding: 10px;
+  transform: rotate(45deg);
+  margin-top: 120px;
+}
+#bottomForm{
+  padding: 15px 150px;
 }
 </style>
