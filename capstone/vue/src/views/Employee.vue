@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <h1>Repair List</h1>
+    <h1 style="font-size: 70px;">Repair List</h1>
     <employee-links />
     <employee-details />
     </div>
@@ -23,5 +23,7 @@ export default {
 </script>
 
 <style>
-
+.dashboard h1{
+  text-align: center;
+}
 </style>

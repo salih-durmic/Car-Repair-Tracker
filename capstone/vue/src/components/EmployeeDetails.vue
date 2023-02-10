@@ -1,30 +1,26 @@
 <template>
   <div class="root">
-
     <div v-if="isLoaded">
-    <!-- {{ allServices }} -->
+      <!-- {{ allServices }} -->
 
-     <div class="user" v-for="user in this.users" v-bind:key="user.id">
+      <div id="userAndCars" class="user" v-for="user in this.users" v-bind:key="user.id">
+        <p id="userFirstAndLast">Name: {{ user.firstName }} {{ user.lastName }} <br>
+        Number: {{ user.phoneNumber }}</p>
 
-      <p  >Name: {{ user.firstName }} {{ user.lastName }}</p>
-      <p  >Phone Number: {{ user.phoneNumber }}</p>
-      
-      <!-- <p>Car Object {{ user.cars.length }}</p> -->
-       <!-- {{hasCarsFromUser(user)}}  -->
-      <!-- v-show="hasCarsFromUser(user)" -->
-    
+        <!-- <p>Car Object {{ user.cars.length }}</p> -->
+        <!-- {{hasCarsFromUser(user)}}  -->
+        <!-- v-show="hasCarsFromUser(user)" -->
 
-      <div class="car" v-for="car in user.cars" v-bind:key="car.carId" >
-
-        <p>Make: {{ car.make }}</p>
-        <p>Model: {{ car.model }}</p>
-        <p>Year: {{ car.year }}</p>
-        <p>Color: {{ car.color }}</p>
-        <!-- <p>Oil: {{ car.services.service.oil }}</p> -->
-        <!-- <p>Front Brakes: {{ car.services.service.frontBrakes }}</p> -->
-        <!-- <p>Back Brakes: {{ car.services.service.backBrakes }}</p> -->
-        <!-- <p>Tires: {{ car.services.service.tires }}</p> -->
-
+        <div class="car" v-for="car in user.cars" v-bind:key="car.carId">
+          <p>Make: {{ car.make }}</p>
+          <p>Model: {{ car.model }}</p>
+          <p>Year: {{ car.year }}</p>
+          <p>Color: {{ car.color }}</p>
+          <p>Oil: {{ car.services.service.oil }}</p>
+          <p>Front Brakes: {{ car.services.service.frontBrakes }}</p>
+          <p>Back Brakes: {{ car.services.service.backBrakes }}</p>
+          <p>Tires: {{ car.services.service.tires }}</p>
+        </div>
         <!-- <form v-on:submit.prevent="saveRequest1(car.services.service.serviceId)">
               <input type="text" disabled v-model="service.serviceId" />
 
@@ -62,14 +58,9 @@
 
               <button type="submit">Submit</button>
             </form> -->
-
-
-        
       </div>
-    </div> 
 
-         
-          <!-- <div
+      <!-- <div
             class="service-box"
             v-for="service in allServices"
             v-bind:key="service.serviceId"
@@ -118,27 +109,26 @@
             </form>
           </div> -->
 
-          <!-- 1st Draft of doing page -->
+      <!-- 1st Draft of doing page -->
 
-           <!-- <table>
+      <!-- <table>
             <thead>
               <tr> -->
 
-                <!-- <th>Name</th> -->
-                <!-- <th>Phone Number</th> -->
-                <!-- <th>Make</th> -->
-                <!-- <th>Model</th> -->
-                <!-- <th>Year</th> -->
-                <!-- <th>Color</th> -->
-                <!-- <th>Oil</th>
+      <!-- <th>Name</th> -->
+      <!-- <th>Phone Number</th> -->
+      <!-- <th>Make</th> -->
+      <!-- <th>Model</th> -->
+      <!-- <th>Year</th> -->
+      <!-- <th>Color</th> -->
+      <!-- <th>Oil</th>
                 <th>Front Brakes</th>
                 <th>Back Brakes</th>
                 <th>Tires</th> -->
 
-                <!-- <th>Date Reported</th> -->
+      <!-- <th>Date Reported</th> -->
 
-
-                <!-- <th>Estimated Completion</th>
+      <!-- <th>Estimated Completion</th>
                 <th>Labor</th>
                 <th>Estimated Cost</th>
                 <th>Status</th>
@@ -147,24 +137,24 @@
             </thead>
             <tbody>
               <tr -->
-                <!-- v-for="service in this.$store.state.serviceList"
+      <!-- v-for="service in this.$store.state.serviceList"
                 v-bind:key="service.serviceId"
               > -->
-                <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
-                <!-- <td></td> -->
-                <!-- <td></td> -->
-                <!-- <td></td> -->
-                <!-- <td></td> -->
-                <!-- <td></td> -->
-<!-- 
+      <!-- <td>{{this.$store.state.user.firstName}} {{this.$store.state.user.lastName}}</td> -->
+      <!-- <td></td> -->
+      <!-- <td></td> -->
+      <!-- <td></td> -->
+      <!-- <td></td> -->
+      <!-- <td></td> -->
+      <!-- 
                 <td>{{ service.oil }}</td>
                 <td>{{ service.frontBrakes }}</td>
                 <td>{{ service.backBrakes }}</td>
                 <td>{{ service.tires }}</td> -->
 
-                <!-- <td>Today's date</td> -->
+      <!-- <td>Today's date</td> -->
 
-                <!-- <td>
+      <!-- <td>
                   <form v-on:submit.prevent="saveRequest">
                     <input
                       id="completion-date"
@@ -271,9 +261,7 @@ export default {
               let services = response.data;
               this.users[i].cars[j].services = services;
             });
-
           }
-          
         });
       }
       this.$store.commit("SET_USERS", this.users);
@@ -286,9 +274,8 @@ export default {
       this.$store.commit("SET_REQUESTS", response.data.requests);
     });
 
-    const delayInMilliseconds = 300;
-    setTimeout(()=> this.isLoaded = true, delayInMilliseconds);
-
+    const delayInMilliseconds = 800;
+    setTimeout(() => (this.isLoaded = true), delayInMilliseconds);
   },
 };
 </script>
@@ -300,5 +287,22 @@ export default {
   margin: 20px;
   padding: 20px;
   background-color: cornflowerblue;
+}
+.car {
+  border: solid 5px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+}
+#userAndCars{
+display: flex;
+flex-direction: row;
+justify-content: center;
+
+}
+#userFirstAndLast{
+  font-size: 25px;
+  font-weight:bolder;
+  text-align: left;
 }
 </style>
