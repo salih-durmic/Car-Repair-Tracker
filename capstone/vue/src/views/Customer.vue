@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <h1>Details</h1>
+    <!-- <h1>Details</h1> -->
     <customer-links />
     <customer-details />
   </div>

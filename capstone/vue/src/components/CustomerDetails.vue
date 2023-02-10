@@ -1,6 +1,6 @@
 <template>
   <div class="details">
-      <h1>Actual Customer Details</h1>
+      <h1>Customer Vehicle Details</h1>
       <table>
         <thead>
             <tr>
