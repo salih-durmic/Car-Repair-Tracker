@@ -72,7 +72,7 @@
         <option value="x4 WeatherGuard">x4 WeatherGuard</option>
       </select>
       </section>
-      <label for="drop-off-date">Drop Off Date: </label>
+      <label for="drop-off-date" style="font-size: 30px;">Drop Off Date: </label>
       <input
         id="drop-off-date"
         name="drop-off-date"
@@ -132,7 +132,17 @@ export default {
 </script>
 
 <style>
-
+.request-service-form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(228, 228, 228);
+  padding: 30px 30px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  height: 300px;
+}
 #car {
   display: flex;
   flex-direction: row;
@@ -162,12 +172,14 @@ export default {
   /* padding: 2%; */
   margin-left: 10px;
   margin-right: 10px;
+  margin: 20px 10px;
 }
 #dropDownService {
   font-size: 25px;
   /* padding: 2%; */
   margin-left: 10px;
   margin-right: 10px;
+  margin: 20px 10px;
 }
 #backBrakesDrop {
   font-size: 25px;
@@ -175,19 +187,23 @@ export default {
   /* width: 50%; */
   margin-left: 10px;
   margin-right: 10px;
+  margin: 20px 10px;
 }
 #tiresDrop{
   font-size: 25px;
   /* padding: 2%; */
   margin-left: 10px;
   margin-right: 10px;
+  margin: 20px 10px;
 }
-#dropOffDate {
+#drop-Off-date {
   margin-left: 10px;
   margin-right: 10px;
+  /* padding: 10px 10px; */
 }
 #submitRequestButton {
   font-size: 30px;
+  margin-top: 15px;
 }
 #dropDownSection{
   display: flex;
