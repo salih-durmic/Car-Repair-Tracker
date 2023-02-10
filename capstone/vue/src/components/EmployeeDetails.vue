@@ -2,9 +2,10 @@
   <div class="root">
     {{ allServices }}
 
-     <div class="user" v-for="user in users" v-bind:key="user.id">
+     <div class="user" v-for="user in this.users" v-bind:key="user.id">
 
-      <p  >Name: {{ user.firstName }}</p>
+      <p  >Name: {{ user.firstName }} {{ user.lastName }}</p>
+      <p  >Phone Number: {{ user.phoneNumber }}</p>
       
       <!-- <p>Car Object {{ user.cars.length }}</p> -->
        <!-- {{hasCarsFromUser(user)}}  -->
@@ -13,16 +14,55 @@
 
       <div class="car" v-for="car in user.cars" v-bind:key="car.carId" >
 
-        <p  >Make: {{ car.make }}</p>
+        <p>Make: {{ car.make }}</p>
+        <p>Model: {{ car.model }}</p>
+        <p>Year: {{ car.year }}</p>
+        <p>Color: {{ car.color }}</p>
+        <!-- <p>Oil: {{ car.services.service.oil }}</p> -->
+        <!-- <p>Front Brakes: {{ car.services.service.frontBrakes }}</p> -->
+        <!-- <p>Back Brakes: {{ car.services.service.backBrakes }}</p> -->
+        <!-- <p>Tires: {{ car.services.service.tires }}</p> -->
+
+        <!-- <form v-on:submit.prevent="saveRequest1(car.services.service.serviceId)">
+              <input type="text" disabled v-model="service.serviceId" />
+
+              <input
+                id="completion-date"
+                name="completion-date"
+                class="completion-date-input"
+                type="date"
+                v-model="service.date"
+              />
+              <select v-model="service.labor">
+                <option value="">--- Select Labor Cost ---</option>
+                <option value="Basic Labor">Basic Labor</option>
+                <option value="Half Day Labor">Half Day Labor</option>
+                <option value="Full Day Labor">Full Day Labor</option>
+              </select>
+
+              <input
+                class="estimated-cost-input"
+                type="text"
+                placeholder="Estimated Cost"
+                v-model="service.estimatedCost"
+              />
+
+              <select v-model="service.status">
+                <option value="">--- Select Status ---</option>
+                <option value="Pending">Pending</option>
+                <option value="Active">Active</option>
+                <option value="Completed">Completed</option>
+              </select>
+
+              Paid:
+
+              <input type="checkbox" v-model="service.paid" />
+
+              <button type="submit">Submit</button>
+            </form> -->
 
 
-        <div class="services" v-for="service in car.services" v-bind:key="service.serviceId">
-
-          <p  > Oil: {{ service.oil }}</p>
-
-
-
-            </div>
+        
       </div>
     </div> 
 
@@ -228,6 +268,7 @@ export default {
           }
         });
       }
+      this.$store.commit("SET_USERS", this.users);
     });
 
     repairsService.getServiceList().then((response) => {
