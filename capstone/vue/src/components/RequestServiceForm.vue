@@ -94,7 +94,14 @@ export default {
             repairsService.create(this.serviceRequest).then((response) => {
                 if(response.status===200) {
                     alert("success")
-                    this.$router.push("/user/:id");
+
+                    console.log(this.$store.state.user.id)
+
+                    this.$router.push({ path: `/user/${this.$store.state.user.id}` }) // -> /user/1
+
+
+                    // this.$router.push({name: 'user', params: {id: this.$store.state.user.id}})
+                    // this.$router.push("/user/" + this.$store.state.user.id);
                   
                     
                 } else {
